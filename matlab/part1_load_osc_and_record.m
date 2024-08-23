@@ -15,7 +15,7 @@ addpath /usr/share/tascar/matlab/
 %% Part 1.1: Load an existing scene
 
 % load the scene in tascar:
-h_temp=tascar_ctl('load', 'part1_basic1.tsc');
+h_temp=tascar_ctl('load', 'part1.tsc');
 pause(3);
 
 %% Part 1.2: Modify parameters of the opened scene
