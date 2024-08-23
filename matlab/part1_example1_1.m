@@ -18,7 +18,7 @@ addpath /usr/share/tascar/matlab/
 h_temp=tascar_ctl('load', 'part1_basic1.tsc');
 pause(3);
 
-%% Part 1.2.: Modify parameters of the opened scene
+%% Part 1.2: Modify parameters of the opened scene
 
 % Here is how to modify the TASCAR scene from MATLAB.  The scene
 % parameters can be modified from MATLAB using the 'send_osc.m'
