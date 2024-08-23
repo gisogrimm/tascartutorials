@@ -32,16 +32,26 @@ cd tascartutorials/matlab
 
 ### Step 1: Load scene and scene definition file
 
-* Load [`task2_basic2.tsc`](task2_basic2.tsc) into TASCAR.
+* Load [`part2.tsc`](task2_basic2.tsc) into TASCAR.
 * View the corresponding scene definition file.
 
 ### Step 2: Modify the scene definition file using MATLAB/Octave scripts
 
-* Use [`task2_example2.m`](task2_example2.m) to modify the [`task2_basic2.tsc`](task2_basic2.tsc) scene definition file and save it to a new file.
+* Use [`part2_edit_xml_and_render_ir.m`](task2_example2.m) to modify the [`part2.tsc`](task2_basic2.tsc) scene definition file and save it to a new file.
 * Open both the unmodified and modified scene definition files in a text editor.
 * Open both files in TASCAR to see and hear the changes.
 
 ### Step 3: Render the static impulse response and image source model
 
-* Using [`task2_example2.m`](task2_example2.m), render the static impulse response and image source model of the modified and unmodified scenes.
+* Using [`part2_edit_xml_and_render_ir.m`](task2_example2.m), render the static impulse response and image source model of the modified and unmodified scenes.
 * Compare the rendered signals to see the effects of the modifications.
+
+## Part III: AFC experiment
+
+Design your own AFC experiment with TASCAR and the TASCAR MATLAB tools. Can you measure the Minimum Audible Angle (MAA) in noise as a function of noise direction? Or the spatial release of masking?
+
+Have a look at the TASCAR file [`maa.tsc`](maa.tsc) and adjust it if necessary. You can use the small AFC toolbox in this directory. Enter 
+```
+afcgui maa subjectid
+```
+in MATLAB to start a sample measurement. Modify the functions [`afccfg_maa.m`](afccfg_maa.m) and [`afc_maa_play_interval.m`](afc_maa_play_interval.m) according to your needs.
