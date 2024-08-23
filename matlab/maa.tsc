@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session srv_port="9999" license="CC0" attribution="">
+<session license="CC0">
   <scene guiscale="6">
     <source name="S">
       <sound name="0" x="1"/>
@@ -10,7 +10,7 @@
     <!--In the darklab:-->	
     <!--receiver name="out" type="hoa2d" maxre="true" layout="15chdarklab.spk"/-->
     <!--With headphones:-->
-    <receiver name="out" type="ortf" caliblevel="100"/>
+    <receiver name="out" type="hrtf" caliblevel="100"/>
   </scene>
 <!--With headphones:-->
 <connect src="render.scene:out_l" dest="system:playback_1"/>

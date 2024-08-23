@@ -4,11 +4,10 @@
     <!-- there is a shoebox room, one moving obstacle and a strange room as well-->
     <facegroup damping="0.2" name="walls" reflectivity="0.8" shoebox="6 7 8"/>
     <obstacle name="thewall" transmission="0.1" >
-      <faces>0 -0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0 0.5 -0.5
-</faces>
+      <faces>0 -0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0 0.5 -0.5</faces>
       <position>0 0.75 2 0
-20 0.75 -2 0
-</position>
+      20 0.75 -2 0
+      </position>
     </obstacle>
     <facegroup importraw="shape_Cube.raw" name="magicchamber" damping="0.6" reflectivity="0.8">
       <orientation>0 -45 0 0</orientation>
@@ -16,7 +15,7 @@
     <source name="src">
       <sound name="0">
         <plugins>
-          <sndfile loop="0" name="${HOME}/glabscenes/sounds/speech/daps/f1_script1_clean.wav" level="65"/>
+          <sndfile loop="0" name="sounds/daps/f1_script1_clean.wav" level="65"/>
         </plugins>
       </sound>
       <position>0 1.5 0 0</position>
@@ -28,5 +27,5 @@
   </scene>
   <!--use the following 2 lines only with receiver type ortf:-->
   <!--connect src="render.scene:out_l" dest="system:playback_1"/>
-  <connect src="render.scene:out_r" dest="system:playback_2"/-->
+      <connect src="render.scene:out_r" dest="system:playback_2"/-->
 </session>
