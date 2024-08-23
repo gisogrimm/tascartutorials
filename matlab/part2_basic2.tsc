@@ -15,7 +15,7 @@
     <source name="src">
       <sound name="0">
         <plugins>
-          <sndfile loop="0" name="sounds/daps/f1_script1_clean.wav" level="65"/>
+          <sndfile loop="0" name="sounds/f1_script1_clean.wav" level="65"/>
         </plugins>
       </sound>
       <position>0 1.5 0 0</position>
