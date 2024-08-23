@@ -1,5 +1,4 @@
 # Interfacing with MATLAB/GNU Octave for Adaptive Measurements
----
 
 ## Prerequisites
 
@@ -9,7 +8,6 @@ cd tascartutorials/matlab
 ```
 * Ensure the JACK server is running (e.g., start it with `qjackctl &`).
 
----
 ## Part I: Loading/closing a scene, modifying its contents with OSC and recording sounds from the scene
 
 
@@ -27,7 +25,6 @@ cd tascartutorials/matlab
 	+ Modify scene parameters.
 	+ Record stimuli.
 
----
 ## Part II: Modifying an XML document, offline rendering
 
 ### Step 1: Load scene and scene definition file
