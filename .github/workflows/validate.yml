@@ -1,4 +1,4 @@
-name: Ubuntu 24.04 make
+name: validation
 
 on:
   push:
@@ -11,8 +11,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: fetchall
-      run: git fetch --unshallow --tags
     - name: hoerzentrumserver for TASCAR
       run: wget -qO- https://apt.hoertech.de/openmha-packaging.pub | sudo apt-key add - &&
            sudo apt-add-repository 'deb http://apt.hoertech.de/ noble universe'

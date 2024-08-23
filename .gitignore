@@ -1,2 +1,5 @@
 *~
 *.validated
+*.err
+*.out
+*.pid
