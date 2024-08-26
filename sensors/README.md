@@ -10,7 +10,7 @@ cd tascartutorials/sensors
 * Ensure the JACK server is running (e.g., start it with `qjackctl &`).
 
 <div class="tsc">
-```xml
+```
 <session>
   <scene/>
 </session>
