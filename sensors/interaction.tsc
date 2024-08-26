@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<session license="CC0" duration="3600">
+    <!--
+        The 'scene' element contains the audio and spatial information of the session.
+    -->
+    <scene>
+        <!--
+            The 'source' element represents the audio source, in this case, named "crisps".
+        -->
+        <source name="crisps">
+            <!--
+                The 'sound' element contains the sound plugins for the audio source.
+            -->
+            <sound>
+                <!--
+                    The 'plugins' element contains the plugins used for manipulating the sound.
+                -->
+                <plugins>
+                    <!--
+                        The 'sndfile' element represents a sound file
+                        plugin named
+                        "sounds/194463__agaxly__eating-chips.wav".  It
+                        has a volume level of 55, loops infinitely, and
+                        can be resampled.
+                    -->
+                    <sndfile name="sounds/194463__agaxly__eating-chips.wav" level="55" loop="0" resample="true"/>
+                </plugins>
+            </sound>
+        </source>
+        <!--
+             The 'receiver' element represents the audio receiver, in this case, named "out".
+             It is of type "vbap3d" and uses a specific speaker layout four our lab.
+        -->
+        <receiver name="out" type="vbap3d" layout="lidhan_all_vbap3d.spk"/>
+        <!--
+            The 'facegroup' element represents a group of walls in the scene.
+            It has dimensions of 7x11x3 meters.
+        -->
+        <facegroup name="walls" shoebox="7 11 3"/>
+    </scene>
+    <!--
+        The 'modules' element represents the additional modules used in the session.
+    -->
+    <modules>
+        <!--
+            The 'lslactor' module controls the position of a specific
+            object in the scene with a specific LSL stream with the
+            given predicate.  In this case, it controls the object
+            "/scene/crisps" with the sensor "name='S-R'".
+        -->
+        <lslactor actor="/scene/crisps" predicate="name='S-R'" channels="0 1 2 3 4 5" influence="1 1 1 0 0 0" local="false"/>
+    </modules>
+</session>
