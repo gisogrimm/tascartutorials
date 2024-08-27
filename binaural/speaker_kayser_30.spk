@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<layout>
+  <speaker az="0" el="0"   conv="kayserhrir/300_el_0_az_0.wav"/>
+  <speaker az="30" el="0"  conv="kayserhrir/300_el_0_az_-30.wav"/>
+  <speaker az="60" el="0"  conv="kayserhrir/300_el_0_az_-60.wav"/>
+  <speaker az="90" el="0"  conv="kayserhrir/300_el_0_az_-90.wav"/>
+  <speaker az="120" el="0"  conv="kayserhrir/300_el_0_az_-120.wav"/>
+  <speaker az="150" el="0"  conv="kayserhrir/300_el_0_az_-150.wav"/>
+  <speaker az="180" el="0"  conv="kayserhrir/300_el_0_az_180.wav"/>
+  <speaker az="-150" el="0"  conv="kayserhrir/300_el_0_az_150.wav"/>
+  <speaker az="-120" el="0"  conv="kayserhrir/300_el_0_az_120.wav"/>
+  <speaker az="-90" el="0"  conv="kayserhrir/300_el_0_az_90.wav"/>
+  <speaker az="-60" el="0"  conv="kayserhrir/300_el_0_az_60.wav"/>
+  <speaker az="-30" el="0"  conv="kayserhrir/300_el_0_az_30.wav"/>
+</layout>
