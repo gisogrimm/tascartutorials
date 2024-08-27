@@ -24,8 +24,13 @@ All our cameras were stolen, therefore we cannot demonstrate this today.
 
 ## Step 4: Real time interaction
 
-Look at file `interaction.tsc`. Try and understand the effect of the lslactor module. Add control of the position of the receiver, by adding a second `lslactor` element. You may use the crown to control the position.
+You will need all loudspeakers in the lab. To switch them on, open a terminal and type:
+```
+speakerctl all on
+```
+If you are not in the Gesture Lab, then please adapt the speaker layout file to your own layout.
 
+Look at file `interaction.tsc`. Try and understand the effect of the lslactor module. Add control of the position of the receiver, by adding a second `lslactor` element. You may use the crown to control the position.
 
 ---
 
