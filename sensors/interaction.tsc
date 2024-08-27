@@ -23,7 +23,7 @@
                         has a volume level of 55, loops infinitely, and
                         can be resampled.
                     -->
-                    <sndfile name="sounds/194463__agaxly__eating-chips.wav" level="55" loop="0" resample="true"/>
+                    <sndfile name="../sounds/194463__agaxly__eating-chips.wav" level="55" loop="0" resample="true"/>
                 </plugins>
             </sound>
         </source>
