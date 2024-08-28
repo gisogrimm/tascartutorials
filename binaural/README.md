@@ -18,4 +18,8 @@ Look at the file `binaural.tsc`. The scene contains two speech sources and a dif
 
 ## Step 2: Head tracking for interactive binaural synthesis
 
-You may use our low-cost DIY head tracker with the `oscheadtracker` module. Uncomment the module, connect the head tracker to a power supply (e.g., USB port of your computer), keep it still during the first couple of seconds, and connect to its WLAN.
+You may use our low-cost DIY head tracker with the `oscheadtracker` actor module. Uncomment the module, connect the head tracker to a power supply (e.g., USB port of your computer), keep it still during the first couple of seconds, and connect to its WLAN. To connect it to TASCAR, add the module `oscheadtracker` to the list of modules (uncomment the example code in file `binaural.tsc`). Again, try to compare binaural rendering methods, and play around with front-back confusion.
+
+## Step 3: Connect the openMHA and measure SNR benefit in real-time
+
+The file `snrbenefit.tsc` is a slightly modified version of the previous file. It uses different layers for target and noise signals, to allow measurement of SNR, and estimation of SNR benefit by applying a real-time version of the Hagerman & Olofsson (2004) method.
