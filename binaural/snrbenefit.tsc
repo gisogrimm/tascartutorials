@@ -5,7 +5,7 @@
 
     <!-- this female speaker is our target source: -->
     <source name="S">
-      <sound>
+      <sound layers="1">
         <plugins>
           <sndfile name="../sounds/f1_script1_clean.wav" loop="0" level="65"/>
         </plugins>
@@ -15,30 +15,24 @@
 
     <!-- we add one noise point source and a diffuse noise sound field: -->
     <source name="N_1">
-      <sound name="0">
+      <sound name="0" layers="2">
         <plugins>
           <sndfile name="../sounds/194463__agaxly__eating-chips.wav" loop="0" level="60"/>
         </plugins>
       </sound>
       <position>1 0.8 0 0</position>
     </source>
-    <diffuse name="N_2" size="30 30 30" color="#0000ff">
+    <diffuse name="N_2" size="30 30 30" color="#0000ff" layers="2">
       <plugins>
 	<sndfile name="../sounds/birds.wav" level="60" loop="0" channelorder="FuMa"/>
       </plugins>
     </diffuse>
 
-    <!-- HRTF (binaural) receiver type: -->
-    <receiver name="out_param" type="hrtf" caliblevel="115">
-      <position>0 1.3 0.2 0</position>
-    </receiver>
-    
-    <receiver name="out_hrir_kayser" type="hoa2d" layout="speaker_kayser_30.spk" caliblevel="80" mute="true">
+    <receiver name="out_s" type="hoa2d" layout="speaker_kayser_30.spk" caliblevel="80" layers="1">
       <position>0 1.3 0.2 0</position>
     </receiver>
 
-    <receiver name="out_hrir_ku100" type="hoa2d" caliblevel="118" mute="true">
-      <layout addring="24" sofa_file="HRIR_L2702_NF150.sofa"/>
+    <receiver name="out_n" type="hoa2d" layout="speaker_kayser_30.spk" caliblevel="80" layers="2">
       <position>0 1.3 0.2 0</position>
     </receiver>
 
@@ -48,12 +42,17 @@
     <!-- here are modules to steer the receiver -->
     <simplecontroller actor="/*/out*"/>
 
-    <oscheadtracker actor="/*/out*"/>
+    <!--
+        <waitforjackport ports="MHA:in_1 MHA:in_2 MHA:in_3 MHA:in_4"/>
+    -->
   </modules>
   
   <!--CONNECTIONS:-->
-  <connect src="render.scene:out_param_[lr]" dest="system:playback_[12]"/>
-  <connect src="render.scene:out_hrir_kayser.conv.[02]" dest="system:playback_[12]"/> 
-  <connect src="render.scene:out_hrir_ku100.conv.[01]" dest="system:playback_[12]"/> 
+  <connect src="render.scene:out_s.conv.[02]" dest="system:playback_[12]"/> 
+  <connect src="render.scene:out_n.conv.[02]" dest="system:playback_[12]"/>
+
+  <!--
+      <connect src="render.scene:out_s.conv.[0123]" dest="MHA:in_[1234]"/>
+  -->
 
 </session>
