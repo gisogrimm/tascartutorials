@@ -43,16 +43,18 @@
     <simplecontroller actor="/*/out*"/>
 
     <!--
+        <system command="mha ?read:mha_bf_compression.cfg cmd=start"/>
         <waitforjackport ports="MHA:in_1 MHA:in_2 MHA:in_3 MHA:in_4"/>
     -->
+
   </modules>
   
   <!--CONNECTIONS:-->
   <connect src="render.scene:out_s.conv.[02]" dest="system:playback_[12]"/> 
   <connect src="render.scene:out_n.conv.[02]" dest="system:playback_[12]"/>
-
   <!--
       <connect src="render.scene:out_s.conv.[0123]" dest="MHA:in_[1234]"/>
+      <connect src="render.scene:out_n.conv.[0123]" dest="MHA:in_[1234]"/>
   -->
 
 </session>
