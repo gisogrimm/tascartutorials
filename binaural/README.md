@@ -41,7 +41,7 @@ Now we add an adaptive differential microphone with the openMHA. To start the MH
 ```bash
 mha ?read:mha_bf_compression.cfg cmd=start
 ```
-Alternartively, you may use a `system` TASCAR module to start this process (and end it when closing TASCAR), by adding these lines to the modules section of the file `sndbenefit.tsc`:
+Alternartively, you may use a `system` TASCAR module to start this process (and end it when closing TASCAR), by adding these lines to the modules section of the file `snrbenefit.tsc`:
 ```
 <modules>
    ...
