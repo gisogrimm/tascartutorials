@@ -45,6 +45,14 @@
     <!--
         <system command="mha ?read:mha_bf_compression.cfg cmd=start"/>
         <waitforjackport ports="MHA:in_1 MHA:in_2 MHA:in_3 MHA:in_4"/>
+        <system command="mha -p 33338 ?read:mha_bf_compression.cfg io.name=MHA2 io.con_out= cmd=start"/>
+        <waitforjackport ports="MHA2:in_1 MHA2:in_2 MHA2:in_3 MHA2:in_4"/>
+        <route channels="4" name="minus" lingain="-1"/>
+        <route channels="2" name="half1" lingain="0.5"/>
+        <route channels="2" name="half2" lingain="0.5"/>
+        <route channels="2" name="halfminus" lingain="-0.5"/>
+        <route name="procS" channels="2"/>
+        <route name="procN" channels="2"/>
     -->
 
   </modules>
@@ -55,6 +63,16 @@
   <!--
       <connect src="render.scene:out_s.conv.[0123]" dest="MHA:in_[1234]"/>
       <connect src="render.scene:out_n.conv.[0123]" dest="MHA:in_[1234]"/>
+      <connect src="render.scene:out_s.conv.[0123]" dest="MHA2:in_[1234]"/>
+      <connect src="render.scene:out_n.conv.[0123]" dest="minus:in.[0123]"/>
+      <connect src="minus:out.[0123]" dest="MHA2:in_[1234]"/>
+      <connect src="MHA:out_[12]" dest="half1:in.[01]"/>
+      <connect src="MHA2:out_[12]" dest="half2:in.[01]"/>
+      <connect src="MHA2:out_[12]" dest="halfminus:in.[01]"/>
+      <connect src="half1:out.[01]" dest="procS:in.[01]"/>
+      <connect src="half2:out.[01]" dest="procS:in.[01]"/>
+      <connect src="half1:out.[01]" dest="procN:in.[01]"/>
+      <connect src="halfminus:out.[01]" dest="procN:in.[01]"/>
   -->
 
 </session>

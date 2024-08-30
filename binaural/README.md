@@ -70,6 +70,39 @@ For the estimation of SNR benefit of an adaptive (and therefore non-LTI) system 
 
 Hagerman, B. & Olofsson, Å. (2004). A method to measure the effect of noise reduction algorithms using simultaneous speech and noise. Acta Acustica United with Acustica, 90(2), 356–361.
 
-The key concept of this method is to process the signal twice, once with S+N as an input signal, and once with S-N as an input signal. The assumption is that the processing does not depend on the sign of the noise signal. The estimated processed target signal is then $\hat S = \frac12 (O_{S+N} + O_{S-N})$, the estimated processed noise signal is $\hat N = \frac12 (O_{S+N} - O_{S-N})$.
+The key concept of this method is to process the signal twice, once with $S+N$ as an input signal, and once with $S-N$ as an input signal. The assumption is that the processing does not depend on the sign of the noise signal. The estimated processed target signal is then $\hat S = \frac12 (O_{S+N} + O_{S-N})$, the estimated processed noise signal is $\hat N = \frac12 (O_{S+N} - O_{S-N})$.
 
-Here we can create both mixtures with TASCAR, and run two instances of the MHA simultaneously.
+First, we create a second instance of MHA with a slightly modified command line (control port number and jack name need to be changed, and output jack connections disabled):
+```
+mha -p 33338 ?read:mha_bf_compression.cfg io.name=MHA2 io.con_out= cmd=start
+```
+
+Here we can create input and output mixtures with TASCAR, and run two instances of the MHA simultaneously. $S+N$ can be created by simply adding two jack ports. To create $S-N$ a `route` module can be used, with a linear gain of $-1$:
+```
+<route channels="4" name="minus" lingain="-1"/>
+```
+To connect all input ports of the MHA, use
+```
+<connect src="render.scene:out_s.conv.[0123]" dest="MHA:in_[1234]"/>
+<connect src="render.scene:out_n.conv.[0123]" dest="MHA:in_[1234]"/>
+<connect src="render.scene:out_s.conv.[0123]" dest="MHA2:in_[1234]"/>
+<connect src="render.scene:out_n.conv.[0123]" dest="minus:in.[0123]"/>
+<connect src="minus:out.[0123]" dest="MHA2:in_[1234]"/>
+
+```
+Likewise, the output signals can be mixed to get estimated processed S and estimated processed N:
+```
+<route channels="2" name="half1" lingain="0.5"/>
+<route channels="2" name="half2" lingain="0.5"/>
+<route channels="2" name="halfminus" lingain="-0.5"/>
+<route name="procS" channels="2"/>
+<route name="procN" channels="2"/>
+```
+To connect the outputs, use
+```
+<connect src="half1:out.[01]" dest="procS:in.[01]"/>
+<connect src="half2:out.[01]" dest="procS:in.[01]"/>
+<connect src="half1:out.[01]" dest="procN:in.[01]"/>
+<connect src="halfminus:out.[01]" dest="procN:in.[01]"/>
+```
+Now you may record the signals in procS and procN, or use level meters and datalogging to record the levels and therefore SNR. By comparing it with input SNR, you can measure SNR benefit in real time.
