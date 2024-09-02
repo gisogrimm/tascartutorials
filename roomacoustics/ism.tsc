@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<session duration="240" loop="true" license="CC0" attribution="">
+  <scene guiscale="10">
+    <!--
+    -->
+    <material name="thin" f="125 250 500 1000 2000 4000" alpha="1 1 1 0.1 0.1 0"/>
+    <!-- a single reflector: -->
+    <!--
+    -->
+    <face name="single">
+      <position>0 -1 -0.5 -0.5</position>
+    </face>
+    <!-- a shoebox room: -->
+    <!--
+    -->
+    <facegroup damping="0.2" name="shoebox" shoebox="5 4.4 2.9"/>
+    <!--
+    -->
+    <facegroup importraw="shape_Cube.raw" name="magicchamber" reflectivity="0.8" damping="0.6">
+      <orientation>0 -45 0 0</orientation>
+    </facegroup>
+    <!--
+    -->
+    <obstacle  name="thewall" transmission="0.1">
+      <faces>0.01 -0.5 -0.5 0.01 -0.5 0.5 0.01 0.5 0.5 0.01 0.5 -0.5</faces>
+      <position>0 0.75 2 0 10 0.75 -2 0</position>
+    </obstacle>
+    <!-- a sound source: -->
+    <source name="water">
+      <position>0 1.5 0 0</position>
+      <sound name="0">
+        <plugins>
+          <sndfile name="../sounds/156969__martats__fountain.wav" level="60" loop="0" resample="true"/>
+        </plugins>
+      </sound>
+    </source>
+    <receiver name="out" type="hrtf">
+      <position>0 0 0 0</position>
+      <orientation>0 0 0 0</orientation>
+    </receiver>
+  </scene>
+  <modules>
+    <simplecontroller actor="/*/out"/>
+  </modules>
+  <!-- connect ports: -->
+  <connect src="render.scene:out_[lr]" dest="system:playback_[12]"/>
+</session>

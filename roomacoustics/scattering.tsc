@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<session duration="240" loop="true" license="CC0" attribution="">
+  <scene guiscale="10">
+    <face name="single" scattering="0.5">
+      <position>0 -1 -0.5 -0.5</position>
+    </face>
+    <!-- a sound source: -->
+    <source name="water">
+      <position>0 1.5 0 0</position>
+      <sound name="0">
+        <plugins>
+          <sndfile name="../sounds/156969__martats__fountain.wav" level="60" loop="0" resample="true"/>
+        </plugins>
+      </sound>
+    </source>
+    <receiver name="outamb" type="amb1h1v" scatterreflections="4" scatterspread="20" channelorder="FuMa" scatterstructuresize="1" />
+    <receiver name="out" type="hrtf" scatterreflections="14" scatterspread="50">
+      <position>0 0 0 0</position>
+      <orientation>0 0 0 0</orientation>
+    </receiver>
+  </scene>
+  <modules>
+    <simplecontroller actor="/*/out"/>
+  </modules>
+  <!-- connect ports: -->
+  <connect src="render.scene:out_[lr]" dest="system:playback_[12]"/>
+</session>
