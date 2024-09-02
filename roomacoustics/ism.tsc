@@ -2,29 +2,33 @@
 <session duration="240" loop="true" license="CC0" attribution="">
   <scene guiscale="10">
     <!--
-    -->
     <material name="thin" f="125 250 500 1000 2000 4000" alpha="1 1 1 0.1 0.1 0"/>
+    -->
     <!-- a single reflector: -->
     <!--
-    -->
     <face name="single">
       <position>0 -1 -0.5 -0.5</position>
     </face>
+    -->
+
     <!-- a shoebox room: -->
     <!--
     -->
     <facegroup damping="0.2" name="shoebox" shoebox="5 4.4 2.9"/>
+
     <!--
-    -->
     <facegroup importraw="shape_Cube.raw" name="magicchamber" reflectivity="0.8" damping="0.6">
       <orientation>0 -45 0 0</orientation>
     </facegroup>
-    <!--
     -->
+
+    <!--
     <obstacle  name="thewall" transmission="0.1">
       <faces>0.01 -0.5 -0.5 0.01 -0.5 0.5 0.01 0.5 0.5 0.01 0.5 -0.5</faces>
       <position>0 0.75 2 0 10 0.75 -2 0</position>
     </obstacle>
+    -->
+
     <!-- a sound source: -->
     <source name="water">
       <position>0 1.5 0 0</position>
@@ -34,11 +38,29 @@
         </plugins>
       </sound>
     </source>
+
+    <!-- receiver -->
     <receiver name="out" type="hrtf">
       <position>0 0 0 0</position>
       <orientation>0 0 0 0</orientation>
     </receiver>
+
+    <!-- diffuse reverberation -->
+    <!--
+    <reverb name="reverb_conv" type="foaconv"
+irsname="nuclear_b_format.wav"
+volumetric="37 16 9.1" maxlen="100000" image="false" gain="-11" mute="true">
+      <position>0 0 0 4</position>
+    </reverb>
+
+    <reverb name="reverb_fdn" type="simplefdn" truncate_forward="1" gainmethod="mean"
+            volumetric="37 16 9.1" image="false" damping="0.3" absorption="0.4" gain="20">
+      <position>0 0 0 4</position>
+    </reverb>
+
+    -->
   </scene>
+
   <modules>
     <simplecontroller actor="/*/out"/>
   </modules>
