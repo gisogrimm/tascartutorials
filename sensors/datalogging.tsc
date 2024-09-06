@@ -1,5 +1,5 @@
-<?xml version="1.0"?>
-<session license="CC0">
+﻿<?xml version="1.0"?>
+<session license="CC0" duration="36000">
   <scene/>
 
   <!-- This element represents a collection of modules within the
@@ -31,6 +31,7 @@
            the first sample in the visualization (attribute
            'ignorefirst'). These values are still recorded. -->
       <osc path="/eog" size="3" ignorefirst="true"/>
+      
     </datalogging>
 
     <!-- This element generates a linear time code (LTC) signal and

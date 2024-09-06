@@ -1,6 +1,7 @@
 # Interfacing with MATLAB/GNU Octave for Adaptive Measurements
 
 ## Prerequisites
+* Connect soundcard to computer
 
 * Open a terminal and navigate to the `tascartutorials/matlab` directory:
 ```bash
@@ -13,13 +14,13 @@ cd tascartutorials/matlab
 
 ### Step 1: Opening the script and scene file
 
+* To open MATLAB, type `matlab &` in a terminal.
+* To open Octave, type `octave --gui &` in a terminal.
 * Open the script [`part1_load_osc_and_record.m`](part1_load_osc_and_record.m) in the MATLAB or GNU Octave editor.
 * Open the file [`part1.tsc`](part1.tsc) in a text editor.
 
 ### Step 2: Follow the instructions in the script
 
-* To open MATLAB, type `matlab &` in a terminal.
-* To open Octave, type `octave --gui &` in a terminal.
 * Follow the instructions in [`part1_load_osc_and_record.m`](part1_load_osc_and_record.m) section by section to:
 	+ Load the scene file [`part1.tsc`](part1.tsc) into TASCAR.
 	+ Modify scene parameters.
@@ -30,7 +31,7 @@ cd tascartutorials/matlab
 ### Step 1: Load scene and scene definition file
 
 * Load [`part2.tsc`](task2_basic2.tsc) into TASCAR.
-* View the corresponding scene definition file.
+* View the corresponding scene definition file in a text editor.
 
 ### Step 2: Modify the scene definition file using MATLAB/Octave scripts
 

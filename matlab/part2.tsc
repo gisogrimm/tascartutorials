@@ -15,7 +15,7 @@
     <source name="src">
       <sound name="0">
         <plugins>
-          <sndfile loop="0" name="../sounds/f1_script1_clean.wav" level="65"/>
+          <sndfile loop="0" name="../sounds/f1_script1_clean.wav" level="65" resample="true"/>
         </plugins>
       </sound>
       <position>0 1.5 0 0</position>
@@ -24,7 +24,6 @@
     <receiver name="out"  type="hrtf" caliblevel="100"/>
     <receiver name="out_omni" caliblevel="120"/>
   </scene>
-  <!--use the following 2 lines only with receiver type ortf:-->
-  <!--connect src="render.scene:out_l" dest="system:playback_1"/>
-      <connect src="render.scene:out_r" dest="system:playback_2"/-->
+  <connect src="render.scene:out_l" dest="system:playback_1"/>
+  <connect src="render.scene:out_r" dest="system:playback_2"/>
 </session>
