@@ -6,6 +6,8 @@ A collection of TASCAR tutorials, tested with TASCAR version 0.233.
 
 These tutorials are the material for our annual TASCAR workshop. These files are constantly being improved. If you have any suggestions, please submit a pull request.
 
+[First stepts](firststeps/README.md)
+
 Currently we offer these tutorials:
 
 1. [Sensors, real-time interaction and data logging](sensors/README.md)
