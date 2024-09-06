@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session duration="200" loop="true" license="CC BY SA 2.0" attribution="Giso Grimm">
+  <author name="Giso Grimm"/>
+  <scene guiscale="6" ismorder="2">
+
+    <!-- point source: -->
+    <source name="water">
+      <sound name="0" y="0.2" >
+        <plugins>
+          <!-- sound files -->
+          <sndfile name="${HOME}/glabscenes/sounds/environment/water/169250__skyko__fountain-1.wav" loop="0" level="65"/>
+        </plugins>
+      </sound>
+      <sound name="1" y="-0.2" >
+        <plugins>
+          <sndfile name="${HOME}/glabscenes/sounds/environment/water/169250__skyko__fountain-1.wav" loop="0" level="65"/>
+        </plugins>
+      </sound>
+      <position>0 1 0 0</position>
+    </source>
+
+    <!-- reflectors: -->
+    <facegroup damping="0.4" reflectivity="0.9" name="mirror" >
+      <faces>0 -0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0 0.5 -0.5</faces>
+      <position>0 2 0 0</position>
+      <orientation>0 0 0 0
+      200 3600 0 0</orientation>
+    </facegroup>
+    <facegroup damping="0.4" reflectivity="0.9" name="backwall" >
+      <faces>0 -0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0 0.5 -0.5</faces>
+      <position>0 -2 0 0</position>
+      <orientation>0 180 0 0</orientation>
+    </facegroup>
+
+    <!-- diffuse source: -->
+    <!-- diffuse sources are always in first order ambisonics (four channels, wxyz, FuMa normalization) -->
+    <diffuse 
+      name="background" 
+      size="300 300 300" 
+      color="#0000ff">
+      <plugins>
+        <sndfile name="${HOME}/glabscenes/sounds/diffuse/birds_oldenburg.wav" level="50" resample="true" channelorder="FuMa"/>
+      </plugins>
+     </diffuse>
+
+    <!-- receiver: -->
+    <receiver name="out" type="ortf" caliblevel="110"/>
+
+  </scene>
+  <connect src="render.scene:out_l" dest="system:playback_1"/>
+  <connect src="render.scene:out_r" dest="system:playback_2"/>
+</session>
