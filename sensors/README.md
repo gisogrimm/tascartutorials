@@ -2,21 +2,25 @@
 
 ## Prerequisites
 
-* Open a terminal and navigate to the `tascartutorials/matlab` directory:
+* Open a terminal and navigate to the `tascartutorials/sensors` directory:
 ```bash
 cd tascartutorials/sensors
 ```
-* Ensure the JACK server is running (e.g., start it with `qjackctl &`).
+* Ensure that JACK server is running (e.g., start it with `qjackctl &`).
 
 ## Step 1: Connect sensors
 
-You will be using a Qualisys motion capture system and a self-made IMU/EOG sensor. Look at file `sensorinterface.tsc`. Load it into TASCAR and use `dump_osc 9877` in a terminal to see which OSC messages are arriving. You can stop the process with `Ctrl-C` (or `Strg-C` on a German keyboard).
+You will be using a Qualisys motion capture system and a self-made IMU/EOG sensor. Look at file `sensorinterface.tsc`. Start TASCAR. Load it into TASCAR and use `dump_osc 9877` in a terminal to see which OSC messages are arriving. You can stop the process with `Ctrl-C` (or `Strg-C` on a German keyboard).
 
 Use command line tool `tascar_lslsl` to check which LSL streams are available in the lab.
 
 ## Step 2: Logging of sensor data
 
-Look at file `datalogging.tsc`. It contains entries for EOG and optical tracking. Add Euler angles to the datalogging.
+Look at file `datalogging.tsc`. It contains entries for EOG and optical tracking. Add Euler angles to the datalogging. First identify the path and size of samples by looking at the output of `dump_osc`. The correct entry should look like:
+
+```
+<osc path="/imu/xyzeuler" size="3"/>
+```
 
 ## Step 3: Time code generation for video recordings
 
