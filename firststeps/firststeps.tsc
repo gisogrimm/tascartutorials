@@ -8,12 +8,12 @@
       <sound name="0" y="0.2" >
         <plugins>
           <!-- sound files -->
-          <sndfile name="${HOME}/glabscenes/sounds/environment/water/169250__skyko__fountain-1.wav" loop="0" level="65"/>
+          <sndfile name="../sounds/169250__skyko__fountain-1.wav" loop="0" level="65"/>
         </plugins>
       </sound>
       <sound name="1" y="-0.2" >
         <plugins>
-          <sndfile name="${HOME}/glabscenes/sounds/environment/water/169250__skyko__fountain-1.wav" loop="0" level="65"/>
+          <sndfile name="../sounds/169250__skyko__fountain-1.wav" loop="0" level="65" position="-5"/>
         </plugins>
       </sound>
       <position>0 1 0 0</position>
@@ -35,13 +35,13 @@
     <!-- diffuse source: -->
     <!-- diffuse sources are always in first order ambisonics (four channels, wxyz, FuMa normalization) -->
     <diffuse 
-      name="background" 
-      size="300 300 300" 
-      color="#0000ff">
+        name="background" 
+        size="300 300 300" 
+        color="#0000ff">
       <plugins>
         <sndfile name="${HOME}/glabscenes/sounds/diffuse/birds_oldenburg.wav" level="50" resample="true" channelorder="FuMa"/>
       </plugins>
-     </diffuse>
+    </diffuse>
 
     <!-- receiver: -->
     <receiver name="out" type="ortf" caliblevel="110"/>
