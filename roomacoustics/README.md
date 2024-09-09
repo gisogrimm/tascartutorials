@@ -23,6 +23,7 @@ Open the file [`ism.tsc`](ism.tsc) in a text editor. Play around with the single
 </face>
 ```
 
+In TASCAR press the "play" button to start playback of the sounds. Rewind the time line to zero if you cannot hear any changes. The scene will loop when reaching its end.
 Move around using the "simplecontroller" interface. Mute and unmute the reflector and listen to the difference.
 
 Replace the single reflector with a shoebox-shaped room:
