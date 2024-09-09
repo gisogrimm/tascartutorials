@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <session duration="240" loop="true" license="CC0" attribution="">
-  <scene guiscale="10">
+  <scene guiscale="10" ismorder="1">
     <!--
     <material name="thin" f="125 250 500 1000 2000 4000" alpha="1 1 1 0.1 0.1 0"/>
     -->
