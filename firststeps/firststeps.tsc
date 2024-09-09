@@ -39,7 +39,7 @@
         size="300 300 300" 
         color="#0000ff">
       <plugins>
-        <sndfile name="${HOME}/glabscenes/sounds/diffuse/birds_oldenburg.wav" level="50" resample="true" channelorder="FuMa"/>
+        <sndfile name="../sounds/birds.wav" level="50" resample="true" channelorder="FuMa"/>
       </plugins>
     </diffuse>
 
