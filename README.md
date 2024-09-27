@@ -6,6 +6,8 @@ A collection of TASCAR tutorials, tested with TASCAR version 0.233. See the [tas
 
 These tutorials are the material for our annual TASCAR workshop. These files are constantly being improved. If you have any suggestions, please submit a pull request.
 
+You may these tutorial files together with all required sound files [here](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip).
+
 [First stepts](firststeps/README.md)
 
 Currently we offer these tutorials:
