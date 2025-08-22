@@ -2,11 +2,11 @@
 
 # tascartutorials
 
-A collection of TASCAR tutorials, tested with TASCAR version 0.233. See the [tascar.org](https://tascar.org/) website for news and installation instructions.
+This is a collection of tutorials for TASCAR. TASCAR is a toolbox for low-delay and interactive acoustic scene creation and rendering. See the [tascar.org](https://tascar.org/) website for news and installation instructions.
 
 These tutorials are the material for our annual TASCAR workshop. These files are constantly being improved. If you have any suggestions, please submit a pull request.
 
-You may these tutorial files together with all required sound files [here](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip).
+You may use these tutorial files together with all required sound files [here](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip). They were tested with TASCAR version 0.233. 
 
 [First stepts](firststeps/README.md)
 
