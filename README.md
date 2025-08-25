@@ -3,12 +3,16 @@
 
 # TASCAR tutorials
 
-This repository contains a series of TASCAR tutorials [<a href="#ref1">1</a>]. TASCAR is a toolbox for low-delay and interactive acoustic scene creation and rendering. For more information, please visit the [TASCAR official website](https://tascar.org/).
+This repository contains a series of TASCAR tutorials. TASCAR is a toolbox for low-delay and interactive acoustic scene creation and rendering [<a href="#ref1">1</a>]. For more information, please visit the [TASCAR official website](https://tascar.org/).
 
 
 These tutorials form the basis of our annual TASCAR workshop. These files are constantly being improved. If you have any suggestions, please submit a pull request.
 
 You can download the tutorial files and all the necessary sound files [from github](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip). They were tested with TASCAR version 0.234.
+
+While some of these tutorials require equipment specific to our laboratory, most can be followed on any PC running Linux, Mac OS or Windows. TASCAR and the Jack Audio Connection Kit (JACK) must be installed for all tutorials, as well as an audio interface with either a loudspeaker system or headphones connected to it. To interactively render your own voice, you will also need a microphone or headset.
+
+The *user manual* can be found [on github](https://github.com/gisogrimm/tascar/wiki/master/manual.pdf), or if you installed TASCAR with your packet manager also [locally](file:///usr/share/doc/tascar/manual.pdf). You can use the manual as a valuable reference for all the workshop tutorials.
 
 
 ## List of topics:
@@ -28,11 +32,12 @@ You can download the tutorial files and all the necessary sound files [from gith
 5. [Image source model, diffuse sound fields and reverberation](roomacoustics/README.md)<br/>
    This tutorial demonstrates the room acoustic modelling features of TASCAR and provides a low-delay interactive rendering of a room.
 
-6. [Programming TASCAR: Develop your own plugins](dev/README.md)<br/>
+6. [Interactive communication and data transmission via the internet](ovbox/README.md)<br/>
+   The OVBOX, a network communication tool built upon TASCAR, enables the transmission of low-delay audio and behavioural data.
+
+7. [Programming TASCAR: Develop your own plugins](dev/README.md)<br/>
    If you require additional features for your project, you can extend TASCAR to meet your needs using the development interfaces.
 
-
-Some of these tutorials require equipment that is specific to our lab, but most of them can be followed on any PC (Linux / MacOS / Windows).
 
 
 The files are made available under a [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) licence.
