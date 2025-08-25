@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <session duration="200" loop="true" license="CC BY SA 2.0" attribution="Giso Grimm">
-  <author name="Giso Grimm"/>
-  <scene guiscale="6" ismorder="2">
+  <scene guiscale="6" ismorder="3">
 
-    <!-- point source: -->
+    <!-- add two point source: -->
     <source name="water">
       <sound name="0" y="0.2" >
         <plugins>
-          <!-- sound files -->
+          <!-- add a sound file with a specified playback RMS level -->
           <sndfile name="../sounds/169250__skyko__fountain-1.wav" loop="0" level="65"/>
         </plugins>
       </sound>
       <sound name="1" y="-0.2" >
         <plugins>
+	  <!-- use a time-shifted second instance of the same sound
+	       file. The time shift is to de-correlate the two
+	       sounds. -->
           <sndfile name="../sounds/169250__skyko__fountain-1.wav" loop="0" level="65" position="-5"/>
         </plugins>
       </sound>
       <position>0 1 0 0</position>
     </source>
 
-    <!-- reflectors: -->
+    <!-- add two reflectors. The first is rotating, the second is fixed: -->
     <facegroup damping="0.4" reflectivity="0.9" name="mirror" >
       <faces>0 -0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0 0.5 -0.5</faces>
       <position>0 2 0 0</position>
@@ -33,18 +35,21 @@
     </facegroup>
 
     <!-- diffuse source: -->
-    <!-- diffuse sources are always in first order ambisonics (four channels, wxyz, FuMa normalization) -->
+    <!-- diffuse sources are always in first order ambisonics. The
+         channel order and normalization should be specified - the
+         diffuse sound file used here is in B-Format (Furse-Malham
+         normalization and Furse-Malham/WXYZ channel order). -->
     <diffuse 
         name="background" 
         size="300 300 300" 
         color="#0000ff">
       <plugins>
-        <sndfile name="../sounds/birds.wav" level="50" resample="true" channelorder="FuMa"/>
+        <sndfile name="../sounds/birds.wav" level="50" resample="true" channelorder="FuMa" normalization="FuMa"/>
       </plugins>
     </diffuse>
 
     <!-- receiver: -->
-    <receiver name="out" type="ortf" caliblevel="110"/>
+    <receiver name="out" type="hrtf" caliblevel="110"/>
 
   </scene>
   <connect src="render.scene:out_l" dest="system:playback_1"/>
