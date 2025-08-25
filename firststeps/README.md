@@ -1,4 +1,4 @@
-# First steps
+# First steps in TASCAR
 
 ## Prerequisites
 
