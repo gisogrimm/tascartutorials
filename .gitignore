@@ -1,5 +1,6 @@
 *~
 *.validated
+*.validated.wav
 *.err
 *.out
 *.pid

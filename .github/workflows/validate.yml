@@ -13,7 +13,8 @@ jobs:
     - uses: actions/checkout@v4
     - name: hoerzentrumserver for TASCAR
       run: wget -qO- https://apt.hoertech.de/openmha-packaging.pub | sudo apt-key add - &&
-           sudo apt-add-repository 'deb http://apt.hoertech.de/ noble universe'
+           sudo apt-add-repository 'deb http://apt.hoertech.de/ noble universe' &&
+           sudo apt-add-repository 'deb http://aptdev.hoertech.de/ noble universe'
     - name: dependencies
       run: sudo apt update && 
            sudo apt install --assume-yes tascarcli

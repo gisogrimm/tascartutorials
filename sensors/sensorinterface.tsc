@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <session name="sensors" duration="36000" srv_port="9800" license="CC0">
+  <scene/>
+
   <mainwindow x="0" y="0" w="100" h="100"/>
   <modules>
 
