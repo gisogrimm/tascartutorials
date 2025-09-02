@@ -1,4 +1,4 @@
-# Sensors, real-time interaction and data logging
+# Real-time interaction, data logging, and integration of sensors
 
 In this tutorial you will learn how to collect and process data from external sensors in real time using TASCAR, Open Sound Control (OSC) and the Lab Streaming Layer (LSL). Explore interactive virtual acoustic environments by creating your own gesture interface, tracking head and object movements or gaze directions via EOG or optical tracking to control components of the scene.
 
@@ -12,6 +12,9 @@ Open a terminal and navigate to the `tascartutorials/sensors` directory:
 cd tascartutorials/sensors
 ```
 Ensure that JACK server is running (e.g., start it with `qjackctl &`).
+
+See section 2.2 "Network remote control via OSC" of the TASCAR manual.
+
 
 ## Step 1: Connect sensors
 
