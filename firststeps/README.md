@@ -13,7 +13,20 @@ cd tascartutorials/firststeps
 
 ## How to create a scene in TASCAR
 
-Open a text editor of your choice (e.g. `gedit`, or `xmlcopyeditor` - the latter is good for editing TASCAR scenes) and open the basic example `firststeps.tsc`. You can create your own copy of this file, e.g. `Group1_Task1.tsc`. This will be your own scene definition XML file.
+Open a text editor of your choice (e.g. `gedit`, or `xmlcopyeditor` - the latter is good for editing TASCAR scenes). TASCAR session files are written in [XML](https://www.w3schools.com/xml/default.asp). The extension of TASCAR files is `.tsc`. The root element of a TASCAR session file is `<session>`. It
+can contain one or more scenes `<scene>`, jack port connections
+`<connect>`, or other modules `<modules>`. The simpliest session file can look like this:
+```xml
+<session license="CC0">
+  <scene>
+    <receiver/>
+    <source>
+      <sound/>
+    </source>
+  </scene>
+</session>
+```
+When you load this session file, it will create an acoustic simulation with a colocated source and receiver. No audio content is defined, and no ports are connected, therefore you will not hear anything. For a more functional example, open and edit the file `firststeps.tsc`.
 
 Now, start TASCAR either from the Applications menu or from the command line. The latter is the preferred method because, if there are any problems, it may print additional information to the command line.
 ```bash

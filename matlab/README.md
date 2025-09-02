@@ -1,5 +1,7 @@
 # Interfacing with MATLAB/GNU Octave for Adaptive Measurements
 
+In this tutorial you will learn how to control TASCAR from MATLAB or GNU Octave. We will show you how to change and read parameters of TASCAR from MATLAB/GNU Octave and how to start, stop or rewind the playback of a scene. In the end, you will have a setup for an adaptive measurement method, e.g. the minimum audible angle in spatially complex occlusion environments.
+
 ## Prerequisites
 * Connect soundcard to computer
 

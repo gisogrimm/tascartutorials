@@ -1,5 +1,14 @@
 # Image source model, diffuse sound fields and reverberation
 
+In this session, you'll learn the basics of creating a realistic room acoustic environment in TASCAR using pre-built room models as examples. You'll gain hands-on experience in defining room dimensions, surfaces, and reverberation parameters, and see how these settings impact both diffuse and point sound sources.
+
+You'll also delve into TASCAR's approach to implementing scattering, gaining a deeper understanding of how acoustic simulations work. Additionally, you'll explore the rendering of impulse responses to evaluate the acoustic characteristics of a room, including its reverberation time, echo patterns, and overall sound quality.
+
+By the end of this session, you'll be able to create plausible room acoustic simulations in TASCAR.
+
+See also [zenodo.org/communities/audiovisual_scenes](https://zenodo.org/communities/audiovisual_scenes/).
+
+
 ## Prerequisites
 
 Open a terminal and navigate to the `tascartutorials/roomacoustics` directory:

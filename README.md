@@ -6,9 +6,9 @@
 This repository contains a series of TASCAR tutorials. TASCAR is a toolbox for low-delay and interactive acoustic scene creation and rendering [<a href="#ref1">1</a>]. For more information, please visit the [TASCAR official website](https://tascar.org/).
 
 
-These tutorials form the basis of our annual TASCAR workshop. These files are constantly being improved. If you have any suggestions, please submit a pull request.
+These tutorials form the basis of our annual TASCAR workshop. The files are constantly being improved. If you have any suggestions, please submit a pull request.
 
-You can download the tutorial files and all the necessary sound files [from github](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip). They were tested with TASCAR version 0.234.
+You can download the tutorial files and all the necessary sound files [from github](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip). All session files were tested with TASCAR version 0.234.
 
 While some of these tutorials require equipment specific to our laboratory, most can be followed on any PC running Linux, Mac OS or Windows. TASCAR and the Jack Audio Connection Kit (JACK) must be installed for all tutorials, as well as an audio interface with either a loudspeaker system or headphones connected to it. To interactively render your own voice, you will also need a microphone or headset.
 
@@ -21,7 +21,7 @@ The *user manual* can be found [on github](https://github.com/gisogrimm/tascar/w
    This is where to start if you have never created a TASCAR session file before. It explains how to create the first dynamic scene in TASCAR.
 
 2. [Sensors, real-time interaction and data logging](sensors/README.md)<br/>
-   This tutorial explains how to connect a Qualisys motion capture system and an open-hardware IMU/EOG sensor to control objects in TASCAR.
+   This tutorial explains how to connect a Qualisys motion capture system and an open-hardware IMU/EOG sensor to control orientation and position of objects in TASCAR, and to record the movement data in the datalogging system.
 
 3. [Interfacing from MATLAB/GNU Octave for adaptive measurements](matlab/README.md)<br/>
    Use OSC to exchange data with, and control the state of TASCAR from within MATLAB or GNU Octave.

@@ -1,5 +1,8 @@
 # Interactive Binaural Synthesis, Head Tracking, and openMHA
 
+This tutorial introduces interactive binaural synthesis in TASCAR, focusing on integrating head movement sensors for an immersive audio experience. It covers binaural synthesis techniques using head-related impulse responses (HRIR) and parametric filters to create realistic 3D audio. You will learn to combine TASCAR with the openMHA system for exploring virtual acoustic environments in real-time, with and without hearing aid support.
+
+By the end, you'll be able to implement interactive binaural synthesis with TASCAR, integrate head tracking, combine TASCAR with openMHA, and navigate virtual environments using real-time input devices. You'll also learn to process signals and noise for precise SNR calculation.
 
 ## Prerequisites
 
