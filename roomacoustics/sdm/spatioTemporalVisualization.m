@@ -82,7 +82,7 @@ flagGrid = false;
 % change this central_coords to obtain off-central visulization
 central_coords = [0,0];
 fig_stamp = figure;
-fig_stamp.WindowState = 'maximized';
+%set(fig_stamp,'WindowState', 'maximized');
 hold on
 switch lower(p.DOI)
     case {'backward'}
