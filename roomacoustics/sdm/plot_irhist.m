@@ -1,5 +1,5 @@
 clear all
-close all
+%close all
 
 % render FOA impulse response:
 system('LD_LIBRARY_PATH='''' tascar_renderir scattering.tsc -f 48000 -o ir.wav');

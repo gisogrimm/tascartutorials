@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <session duration="240" loop="true" license="CC0" attribution="">
-  <scene guiscale="10" ismorder="1">
-    <!--
-    <material name="something" f="125 250 500 1000 2000 4000" alpha="1 1 1 0.1 0.1 0"/>
-    -->
+  <scene guiscale="10" ismorder="3">
+    <material name="something" f="125 250 500 1000 2000 4000" alpha="1 0.2 0.1 0.1 0.1 0"/>
     <!-- a single reflector: -->
     <!--
     <face name="single">
@@ -16,11 +14,9 @@
     <facegroup name="shoebox" shoebox="5 4.4 2.9"/>
     -->
 
-    <!--
-    <facegroup importraw="shape_Cube.raw" name="magicchamber">
+    <facegroup importraw="shape_Cube.raw" name="magicchamber" material="something">
       <orientation>0 -45 0 0</orientation>
     </facegroup>
-    -->
 
     <!--
     <obstacle  name="thewall" transmission="0.1">

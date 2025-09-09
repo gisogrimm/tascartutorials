@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <session duration="240" loop="true" license="CC0" attribution="">
-  <scene guiscale="10">
-    <!-- a simple rectangular reflector with scattering: -->
-    <face name="single" scattering="0.5">
-      <position>0 -1 -0.5 -0.5</position>
-    </face>
+  <scene guiscale="10" ismorder="1">
+    <!-- a shoebox room: -->
+    <facegroup name="shoebox" shoebox="5 4.4 2.9"/>
+
     <!-- a sound source: -->
     <source name="water">
       <position>0 1.5 0 0</position>
@@ -14,14 +13,15 @@
         </plugins>
       </sound>
     </source>
-    <!-- first use an ambisonics receiver for the visualization of scattering: -->
-    <receiver name="outamb" type="amb1h1v" scatterreflections="4" scatterspread="30" channelorder="FuMa" scatterstructuresize="1" />
-    <!-- use a second HRTF receiver for auralization: -->
-    <receiver name="out" type="hrtf" scatterreflections="4" scatterspread="30">
+
+    <!-- receiver -->
+    <receiver name="out" type="hrtf">
       <position>0 0 0 0</position>
       <orientation>0 0 0 0</orientation>
     </receiver>
+
   </scene>
+
   <modules>
     <simplecontroller actor="/*/out"/>
   </modules>

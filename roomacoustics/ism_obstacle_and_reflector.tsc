@@ -17,12 +17,14 @@
     -->
 
     <!--
-    <facegroup importraw="shape_Cube.raw" name="magicchamber">
+    <facegroup importraw="shape_Cube.raw" name="magicchamber" >
       <orientation>0 -45 0 0</orientation>
     </facegroup>
     -->
 
     <!--
+	add an obstacle and a linked reflector:
+    -->
     <obstacle  name="thewall" transmission="0.1">
       <faces>0.01 -0.5 -0.5 0.01 -0.5 0.5 0.01 0.5 0.5 0.01 0.5 -0.5</faces>
       <position>
@@ -30,7 +32,9 @@
 	10 0.75 -2 0
       </position>
     </obstacle>
-    -->
+    <facegroup  name="thewallface" parent="thewall" dorientation="180 0 0">
+      <faces>0.01 -0.5 -0.5 0.01 -0.5 0.5 0.01 0.5 0.5 0.01 0.5 -0.5</faces>
+    </facegroup>
 
     <!-- a sound source: -->
     <source name="water">

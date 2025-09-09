@@ -1,12 +1,12 @@
 # Image source model, diffuse sound fields and reverberation
 
-In this session, you'll learn the basics of creating a realistic room acoustic environment in TASCAR using pre-built room models as examples. You'll gain hands-on experience in defining room dimensions, surfaces, and reverberation parameters, and see how these settings impact both diffuse and point sound sources.
+In this session, you'll learn the basics of creating room acoustic environments in TASCAR using pre-built room models as examples. You'll gain hands-on experience in defining room dimensions, surfaces, and reverberation parameters, and see how these settings impact both diffuse and point sound sources.
 
 You'll also delve into TASCAR's approach to implementing scattering, gaining a deeper understanding of how acoustic simulations work. Additionally, you'll explore the rendering of impulse responses to evaluate the acoustic characteristics of a room, including its reverberation time, echo patterns, and overall sound quality.
 
 By the end of this session, you'll be able to create plausible room acoustic simulations in TASCAR.
 
-See also [zenodo.org/communities/audiovisual_scenes](https://zenodo.org/communities/audiovisual_scenes/).
+See section 5.9 (Reflectors) in the TASCAR manual, and [zenodo.org/communities/audiovisual_scenes](https://zenodo.org/communities/audiovisual_scenes/) for open repositories with 3D-models of existing rooms.
 
 
 ## Prerequisites
@@ -20,11 +20,13 @@ Ensure the JACK server is running (e.g., start it with `qjackctl &`).
 
 ## Step 1: Create early reflections with the Image Source Model
 
-The Image Source Model (ISM) in TASCAR treats image sources in the same way as primary sound sources. The only difference is that the signal and position of the image source depends on the properties of the reflectors and the position and orientation of the primary sound source, the reflectors and the receiver.
+An Image Source Model (ISM) creates "image sources" by creating a virtual sound source at the position where it would appear to be, given a reflector, a primary source position, and for "visibility" testing also the receiver position. Higher order ISMs create additional image sources from the combination of image sources and reflectors.
 
-A single reflector can be added with the `<face/>` element, a group of reflectors (e.g. created in 3D editing software) can be added with the `<facegroup/>` element, see section 5.9 of the user manual.  Note that reflectors in TASCAR are acoustically transparent. To create opaque objects use the `<obstacle/>` element (see section 5.10 of the manual).
+The ISM in TASCAR treats image sources in the same way as primary sound sources. The only difference is that the signal and position of the image source depends on the properties of the reflectors and the position and orientation of the primary sound source, the reflectors and the receiver.
 
-Open the file [`ism.tsc`](ism.tsc) in a text editor. Play around with the single reflector first:
+A **single rectangular reflector** can be added with the `<face/>` element, a group of reflectors (e.g. created in 3D editing software) can be added with the `<facegroup/>` element, see section 5.9 of the user manual.  Note that reflectors in TASCAR are acoustically transparent. To create opaque objects use the `<obstacle/>` element (see section 5.10 of the manual).
+
+Open the file [`ism.tsc`](ism.tsc) in a text editor. Play around with the single rectangular reflector first:
 
 ```
 <face name="single">
@@ -35,7 +37,7 @@ Open the file [`ism.tsc`](ism.tsc) in a text editor. Play around with the single
 In TASCAR press the "play" button to start playback of the sounds. Rewind the time line to zero if you cannot hear any changes. The scene will loop when reaching its end.
 Move around using the "simplecontroller" interface. Mute and unmute the reflector and listen to the difference.
 
-Replace the single reflector with a shoebox-shaped room:
+Now replace the single reflector with a **shoebox-shaped room**:
 
 ```
 <facegroup damping="0.2" name="shoebox" shoebox="5 4.4 2.9"/>
@@ -43,10 +45,10 @@ Replace the single reflector with a shoebox-shaped room:
 
 In a closed room a higher order of reflections would be expected, but by default the ISM order is limited to the first order. To enable second order modelling, set the scene attribute `ismorder="2"`. Note that each image source is modelled in the same way as a primary source, with an explicit acoustic path model. Therefore, higher ISM orders require a lot of computing power.
 
-You may have noticed the damping and reflectivity attributes. These are the filter coefficients of the reflection filters. These can be set explicitly or derived from materials. A number of material definitions are built into TASCAR, see section 5.9 of the manual. For example, to use the "concrete" material from this list, set the property `material="concrete"`.
+You may have noticed the damping and reflectivity attributes. These are the filter coefficients of the reflection filters. These can be set explicitly or derived from materials. A number of material definitions are built into TASCAR, see section 5.9 of the manual for a list of pre-defined materials. For example, to use the "concrete" material from this list, set the property `material="concrete"`.
 
 
-Use a reflector modelled in a 3D editor such as Blender. The file format used by TASCAR is a plain text format with one line per reflector surface, in each line
+As a next step, use a **complex reflector** constructed from arbitrary polygon shapes modelled in a 3D editor such as Blender. The file format used by TASCAR is a plain text format with one line per reflector surface, in each line
 
 ```
 x1 y1 z1 x2 y2 z2 x3 y3 z3 ...
@@ -57,9 +59,9 @@ To insert it into the TASCAR scene, type:
    <orientation>0 -45 0 0</orientation>
 </facegroup>
 ```
-A direct import of OBJ or DAE files is planned, but not yet possible.
+A direct import of OBJ or DAE files is planned, but unfortunately not yet possible.
 
-Now try out the obstacle, and compare the sound effects you hear with Figure 10 of the user
+Finally, try out the **obstacle**, and compare the sound effects you hear with Figure 10 of the user
 manual.
 ```
 <obstacle name="thewall" transmission="0.1">
@@ -76,7 +78,7 @@ Add convolution reverb with the internal tool
 ```
 <reverb name="reverb" type="foaconv"
 irsname="nuclear_b_format.wav"
-volumetric="37 16 9.1" maxlen="100000" image="false" gain="-10"/>
+volumetric="37 16 9.1" maxlen="50000" image="false" gain="-10"/>
 ```
 
 Note that TASCAR currently uses a partitioned convolution with a fixed partition size.  This is not very efficient for long impulse responses and short audio block sizes. In this case the use of the external tool `jconvolver` is recommended.
@@ -95,13 +97,13 @@ Try different values for damping and absorption. It is possible to truncate the 
 ## Step 3: Scattering in TASCAR
 
 For visualisation of scattering we added the 
-[SDM](https://github.com/gisogrimm/tascar/tree/ master/scripts/sdm) toolkit, originally written by Sakari Tervo Jukka Pätynen. See the subdirectory [sdm](sdm). To use it, start Matlab, and add these paths:
+[SDM](https://github.com/gisogrimm/tascar/tree/ master/scripts/sdm) toolkit, originally written by Sakari Tervo Jukka Pätynen. See the subdirectory [sdm](sdm). To use it, start Matlab in the current `roomacoustics` folder, and add these paths:
 ```
 addpath /usr/share/tascar/matlab/
 addpath sdm
 ```
 
-To render and visualize the FOA impulse response of the file [`scattering.tsc`](scattering.tsc), type `plot_irhist` in Matlab.
+To render and visualize the FOA impulse response of the file [`scattering.tsc`](scattering.tsc), type `plot_irhist` in Matlab. Play around with the parametrization of scattering.
 
 ## Step 4: Render Impulse Responses
 
@@ -133,3 +135,12 @@ If you prefer to measure an impulse response from a running TASCAR session in re
 ```
 [ir,fs] = tascar_ir_measure('input',{'render.scene:out_l','render.scene:out_r'},'output',{'render.scene:water.0.0'},'len',96000);
 ```
+This tool can also be used for measuring impulse responses from a virtual sound source to an artificial head in your lab. In that case, replace 
+```
+'input',{'render.scene:out_l','render.scene:out_r'}
+```
+by
+```
+'input',{'system:capture_1','system:capture_2'}
+```
+and connect the artificial head to inputs 1 and 2.

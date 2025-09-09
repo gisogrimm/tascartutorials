@@ -6,10 +6,10 @@
     -->
     <!-- a single reflector: -->
     <!--
+    -->
     <face name="single">
       <position>0 -1 -0.5 -0.5</position>
     </face>
-    -->
 
     <!-- a shoebox room: -->
     <!--
@@ -17,7 +17,7 @@
     -->
 
     <!--
-    <facegroup importraw="shape_Cube.raw" name="magicchamber">
+    <facegroup importraw="shape_Cube.raw" name="magicchamber" reflectivity="0.8" damping="0.6">
       <orientation>0 -45 0 0</orientation>
     </facegroup>
     -->
