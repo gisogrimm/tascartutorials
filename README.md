@@ -20,6 +20,9 @@ The *user manual* can be found [on github](https://github.com/gisogrimm/tascar/w
 - [First steps in TASCAR](firststeps/README.md)<br/>
   This is where to start if you have never created a TASCAR session file before. It explains how to create the first dynamic scene in TASCAR.
 
+- [Interfacing TASCAR with OSC](oscif/README.md)<br/>
+  Most parameters and states of TASCAR can be controlled via the network using the Open Sound Control (OSC) interface. Here you will learn how to control it from GNU/Octave, Matlab or the command line.
+
 - [Image source model, diffuse sound fields and reverberation](roomacoustics/README.md)<br/>
   This tutorial demonstrates the room acoustic modelling features of TASCAR and provides a low-delay interactive rendering of a room.
 
@@ -28,9 +31,6 @@ The *user manual* can be found [on github](https://github.com/gisogrimm/tascar/w
 
 - [Sensors, real-time interaction and data logging](sensors/README.md)<br/>
   This tutorial explains how to connect a Qualisys motion capture system and an open-hardware IMU/EOG sensor to control orientation and position of objects in TASCAR, and to record the movement data in the datalogging system.
-
-- [Interfacing from MATLAB/GNU Octave for adaptive measurements](matlab/README.md)<br/>
-  Use OSC to exchange data with, and control the state of TASCAR from within MATLAB or GNU Octave.
 
 - [Interactive communication and data transmission via the internet](ovbox/README.md)<br/>
   The OVBOX, a network communication tool built upon TASCAR, enables the transmission of low-delay audio and behavioural data.
