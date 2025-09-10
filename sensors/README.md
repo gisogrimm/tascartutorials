@@ -13,12 +13,12 @@ cd tascartutorials/sensors
 ```
 Ensure that JACK server is running (e.g., start it with `qjackctl &`).
 
-See section 2.2 "Network remote control via OSC" of the TASCAR manual.
+Further information on controlling TASCAR via the OSC protocol can be found in Section 2.2 "Network remote control via OSC" of the [TASCAR manual](https://www.tascar.org/manual.pdf).
 
 
 ## Step 1: Connect sensors
 
-You will be using a Qualisys motion capture system and a self-made IMU/EOG sensor. Look at file `sensorinterface.tsc`. Start TASCAR. Load it into TASCAR and use `dump_osc 9877` in a terminal to see which OSC messages are arriving. You can stop the process with `Ctrl-C` (or `Strg-C` on a German keyboard).
+You will be using a self-made sensor combining an Inertial Measurement Unit (IMU) to capture head movement and an Electrooculogram (EOG) to measure eye orientation. If you are currently in the Gesture Lab you can use a Qualisys motion capture system in addition, which uses multiple cameras to track the movement of reflective markers attached to a head-mounted crown. Look at file `sensorinterface.tsc`. Start TASCAR. Load it into TASCAR and use `dump_osc 9877` in a terminal to see which OSC messages are arriving. You can stop the process with `Ctrl-C` (or `Strg-C` on a German keyboard).
 
 Use command line tool `tascar_lslsl` to check which LSL streams are available in the lab.
 
@@ -55,7 +55,7 @@ Look at file `interaction.tsc`. Try and understand the effect of the lslactor mo
 - optical headtracker
 - headtracker IMU
 - EOG
-- video recording (not today, camerase stolen)
+- video recording (not today)
 - EEG (not today, too complex)
 
 
