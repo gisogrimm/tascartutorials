@@ -23,14 +23,14 @@ The *user manual* can be found [on github](https://github.com/gisogrimm/tascar/w
 - [Image source model, diffuse sound fields and reverberation](roomacoustics/README.md)<br/>
   This tutorial demonstrates the room acoustic modelling features of TASCAR and provides a low-delay interactive rendering of a room.
 
+- [Interactive Binaural Synthesis, Head Tracking, and openMHA](binaural/README.md)<br/>
+  This tutorial explains how to render binaural signals and how to use a head tracker to achieve dynamic binaural rendering. It also demonstrates how to combine the output with the hearing aid software, openMHA.
+
 - [Sensors, real-time interaction and data logging](sensors/README.md)<br/>
   This tutorial explains how to connect a Qualisys motion capture system and an open-hardware IMU/EOG sensor to control orientation and position of objects in TASCAR, and to record the movement data in the datalogging system.
 
 - [Interfacing from MATLAB/GNU Octave for adaptive measurements](matlab/README.md)<br/>
   Use OSC to exchange data with, and control the state of TASCAR from within MATLAB or GNU Octave.
-
-- [Interactive Binaural Synthesis, Head Tracking, and openMHA](binaural/README.md)<br/>
-  This tutorial explains how to render binaural signals and how to use a head tracker to achieve dynamic binaural rendering. It also demonstrates how to combine the output with the [hearing aid software, openMHA](https://www.openmha.org/).
 
 - [Interactive communication and data transmission via the internet](ovbox/README.md)<br/>
   The OVBOX, a network communication tool built upon TASCAR, enables the transmission of low-delay audio and behavioural data.

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<session duration="60" loop="true" license="CC BY-SA" attribution="Joanna Luberadzka" requirefragsize="512" requiresrate="44100">
+<session duration="60" loop="true" license="CC BY-SA" attribution="Joanna Luberadzka" requirefragsize="512" requiresrate="48000">
 
   <scene guiscale="6">
 
@@ -37,7 +37,7 @@
       <position>0 1.3 0.2 0</position>
     </receiver>
 
-    <receiver name="out_hrir_ku100" type="hoa2d" caliblevel="118" mute="true">
+    <receiver name="out_hrir_ku100" type="hoa2d" caliblevel="118" mute="true" diffusegain="14">
       <layout addring="24" sofa_file="HRIR_L2702_NF150.sofa"/>
       <position>0 1.3 0.2 0</position>
     </receiver>
