@@ -144,3 +144,41 @@ by
 'input',{'system:capture_1','system:capture_2'}
 ```
 and connect the artificial head to inputs 1 and 2.
+
+## Step 5: Real-time processing of own voice
+
+To process your own microphone with the room acoustics of your TASCAR scene, simply connect the input jack port with the jack port of the sound source. In any variant of `ism*.tsc`, you may remove or mute the `<sndfile .../>` plugin, and add on `<session>` level (typically at the end of the session) a line to permanently connect the ports:
+```XML
+<connect src="system:capture_1" dest="render.scene:water.0.0"/>
+```
+Now you should hear your own voice with the early reflections and reverberation of the scene.
+
+Sometimes it is not desirable to simulate the direct source path, e.g., when using a loudspeaker system with other listeners in the same space. In that case, you may set the attribute `ismmin` of the `<sound/>` element to 1:
+```XML
+<sound ismmin="1"/>
+```
+However, if you are using also the diffuse reverberation, please note that that plugin is configured t process only the direct path. To solve this problem, the `layers` attribute can be used. Any sound, diffuse sound field and receiver can be restricted to a set of layers. To render the ISM only in one layer, and the reverberation in another layer, duplicate the sound vertex, and configure the layer attributes:
+```XML
+<sound name="water" layers="1" ismmin="1">...</sound>
+<sound name="water_rev" layers="2">...</sound>
+```
+Now move the receiver to layer 1:
+```XML
+<receiver layers="1" .../>
+```
+The reverb plugin should have an input in layer 2 and an output in layer 1:
+```XML
+<reverb layers="2" outputlayers="1".../>
+```
+Do not forget to connect also the new sound to the microphone, using a second `<connect .../>` element.
+
+For interactive processing of your own voice (or any other real-time input), you may want to decrease the overall latency. To do so, you need to configure the jack sound server to use a smaller fragment size. First, exit TASCAR, and stop the processing. Now, in qjackctl, stop jack and open the setup window. Here you can select a shorter fragment size. Please note that short fragment sizes require a low-delay real-time optimized operating system, e.g., a dedicated Linux kernel, or MacOS.
+
+In TASCAR, many functions are called on every processing cycle, e.g., the geometry is updated at the boundaries of each audio block. This results in an increase of computational load with smaller fragment sizes. If the CPU load displayed in jack (or in the status bar of TASCAR) reaches values above 50-70% and you experience dropouts, you may need to reduce the complexity of the scene:
+
+- use lower ISM order
+- use fewer reflectors
+- use FDN instead of convolution reverb
+- use fewer primary sound sources
+
+On extremely optimized Linux systems or on MacOS, a fragment size of 1-2 ms should be possible with a total of several 100 sound sources. The OVBOX (essentially TASCAR on a Raspberry Pi with dedicated Raspbian OS), fragment sizes of 1-2 ms are possible with approx. 10-30 sound sources. On a non-optimized Linux PC, the smallest possible fragment sizes are probably in the range of 5-10 ms. The total round trip latency is two times the fragment size, plus delays in the simulation, plus hardware delay due to USB transmission, anti-aliasing filters and similar.
