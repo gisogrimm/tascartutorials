@@ -45,3 +45,18 @@ Get creative and design your own scene. Refer to chapters 3–5 of the user manu
 - reflectors (`<face .../>` or `<facegroup .../>`) (5.9)
 
 On our lab computers, open directory with TASCAR scenes: `glabscenes/` - you will find many examples of TASCAR scenes as well as tons of sound samples there. Another good source of sounds is [freesound](https://freesound.org/) All objects can move or change their orientation. You can assign any available sound samples to your sources. You can create different rooms and try different receivers. Be creative and have fun!
+
+## Finding and fixing errors in session files
+
+Of course, errors sometimes occur and there can be many reasons for them. For example, TASCAR will not load a session if critical errors are detected, such as a malformed session file. Sometimes non-critical problems are detected while loading a session or during runtime. These are displayed as warnings. It is highly recommended that you do not use a session in a production setup when a warning is displayed.
+
+Errors and warnings are displayed at the command line and, where possible, in the main window's 'Warnings' tab. To view all warnings and errors, start TASCAR from the command line and monitor the output of that window, especially if something is behaving unexpectedly.
+
+Important points to keep in mind when working with TASCAR:
+
+- Do not try to start TASCAR while a second instance of TASCAR with the same file is still running or attempting to load a session.
+- When a session does not load the first time, it will not load the second time either. First, fix the errors.
+- TASCAR uses a network socket which is bound to UDP port 9877 by default. It is not possible to start multiple TASCAR sessions simultaneously without changing the port number explicitly.
+- Most common errors are caused by malformed XML. Take care to close all elements correctly and pay attention to the hierarchy in the XML files.
+- Take care when setting gains and levels. There is no automatic check for excessive sound levels.
+- Read the error messages and warnings carefully, and try to understand their meaning.
