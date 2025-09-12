@@ -109,3 +109,18 @@ send_osc('localhost',9877,'/timedmessages/clear');
 
 ## Step 4: Reading internal states and values
 
+Some of the variables which can be set via OSC can also be read out via OSC. In the "OSC variables" tab these variables are indicated with the letter "r" after the format string. To read the current value, you need to create an OSC server to which the values will be sent. On the command line, this can be done with the command:
+```bash
+dump_osc 9000
+```
+This will create a UDB server listening on port 9000. Creating a server in Matlab is more difficult, see the script [example_receive_osc.m](https://github.com/gisogrimm/tascar/blob/master/scripts/example_receive_osc.m) for an example.
+
+To receive the current value of a variable, you can send an OSC message to the variable path, appended by "/get", with two special parameters: the first is a valid OSC target address, e.g., 'osc.udp://localhost:9000/', and the second is a target path. For example, to read the value of '`/scene/backwall/scattering`', type:
+```bash
+send_osc 9877 /scene/backwall/scattering/get osc.udp://localhost:9000/ /var
+```
+The response will be something like this (in this example using `dump_osc`):
+```
+/var ,sf /scene/backwall/scattering 0.0
+```
+Here, the path is the same path provided in the `/get` message. The next is the format string, followed by the variable path and its current value.
