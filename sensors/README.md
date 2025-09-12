@@ -13,7 +13,7 @@ cd tascartutorials/sensors
 ```
 Ensure that JACK server is running (e.g., start it with `qjackctl &`).
 
-Further information on controlling TASCAR via the OSC protocol can be found in Section 2.2 "Network remote control via OSC" of the [TASCAR manual](https://www.tascar.org/manual.pdf).
+Further information on controlling TASCAR via the OSC protocol can be found in Section 2.2 "Network remote control via OSC" of the [TASCAR manual](https://www.tascar.org/manual.pdf) and in the tutorial "[Interfacing TASCAR with OSC](../oscif/README.md)".
 
 
 ## Step 1: Connect sensors
