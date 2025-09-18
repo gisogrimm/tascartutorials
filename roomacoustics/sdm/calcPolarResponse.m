@@ -72,7 +72,7 @@ H = zeros(length(doa_vect),1);
 idx = 1;
 for a = doa_vect
     inds = AZ == a;
-    H(idx) = nansum(A2(inds).*abs(cos(el(inds))));
+    H(idx) = sum(A2(inds).*abs(cos(el(inds))));
     idx = idx + 1;
 end
 

@@ -45,7 +45,8 @@ disp('Started SDM processing'); tic;
 winLen = p.winLen;
 
 % Windowing
-W = hanning(winLen);
+%W = hanning(winLen);
+W = hann(winLen);
 
 % --- Frame based processing ---- 
 % Convolution of DOA with W -> low-pass filtering the DOA estimates

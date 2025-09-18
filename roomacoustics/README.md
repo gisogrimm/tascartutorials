@@ -24,7 +24,7 @@ An Image Source Model (ISM) creates "image sources" by creating a virtual sound 
 
 The ISM in TASCAR treats image sources in the same way as primary sound sources. The only difference is that the signal and position of the image source depends on the properties of the reflectors and the position and orientation of the primary sound source, the reflectors and the receiver.
 
-A **single rectangular reflector** can be added with the `<face/>` element, a group of reflectors (e.g. created in 3D editing software) can be added with the `<facegroup/>` element, see section 5.9 of the user manual.  Note that reflectors in TASCAR are acoustically transparent. To create opaque objects use the `<obstacle/>` element (see section 5.10 of the manual).
+A **single rectangular reflector** can be added with the `<face/>` element, a group of reflectors (e.g. created in 3D editing software) can be added with the `<facegroup/>` element, see section 5.9 of the user manual.  Note that reflectors in TASCAR are acoustically transparent, which means that any sound will pass through them without any modifications. To create opaque objects use the `<obstacle/>` element (see section 5.10 of the manual).
 
 Open the file [`ism.tsc`](ism.tsc) in a text editor. Play around with the single rectangular reflector first:
 
@@ -43,12 +43,15 @@ Now replace the single reflector with a **shoebox-shaped room**:
 <facegroup damping="0.2" name="shoebox" shoebox="5 4.4 2.9"/>
 ```
 
-In a closed room a higher order of reflections would be expected, but by default the ISM order is limited to the first order. To enable second order modelling, set the scene attribute `ismorder="2"`. Note that each image source is modelled in the same way as a primary source, with an explicit acoustic path model. Therefore, higher ISM orders require a lot of computing power.
+In a closed room a higher order of reflections would be expected, but by default the ISM order is limited to the first order. To enable second order modelling, set the scene attribute `ismorder="2"`. Note that each image source is modelled in the same way as a primary source, with an explicit acoustic path model. Therefore, higher ISM orders require a lot of computing power. In a scene with one primary source and a shoebox shaped room, order 1 results in a total number of 7 sources, order 2 in 37 sources, order 3 in 187, order 4 in 937, order 5 in 4867 sources and so on, with an exponential growth.
 
 You may have noticed the damping and reflectivity attributes. These are the filter coefficients of the reflection filters. These can be set explicitly or derived from materials. A number of material definitions are built into TASCAR, see section 5.9 of the manual for a list of pre-defined materials. For example, to use the "concrete" material from this list, set the property `material="concrete"`.
 
 
-As a next step, use a **complex reflector** constructed from arbitrary polygon shapes modelled in a 3D editor such as Blender. The file format used by TASCAR is a plain text format with one line per reflector surface, in each line
+The next step is to use a **complex reflector** constructed from arbitrary polygon shapes modelled in a 3D editor such as Blender. Unlike computer graphics, where triangularised objects are often used, TASCAR uses flat polygons as reflectors for computational reasons. This is because it creates only a single image source per reflector and primary source, whereas multiple sources would be created in the case of multiple triangles. Please note that the face normal is relevant in TASCAR because sources are only reflected if they and the receiver are on the side of the reflector where the normal points. The right-hand rule is applied to calculate the face normal, i.e. if the vertices on the x-y plane are arranged in a counterclockwise order, the face normal points upwards in the positive z-direction.
+
+
+The file format used by TASCAR is a plain text format with one line per reflector surface, in each line
 
 ```
 x1 y1 z1 x2 y2 z2 x3 y3 z3 ...
@@ -66,12 +69,20 @@ manual.
 ```
 <obstacle name="thewall" transmission="0.1">
   <faces>0 -0.5 -0.5 0 -0.5 0.5 0 0.5 0.5 0 0.5 -0.5</faces>
-<position>0
+  <position>
+	0 0.75 2 0
+	10 0.75 -2 0
+  </position>
+</obstacle>
 ```
 
-## Step 2: Diffuse reverberation
+## Step 2: Late reverberation
 
-To create diffuse reverberation in TASCAR, a diffuse sound field is generated from the output of the image source model. In principle, this can be done by convolving the output of the image source model with (simulated or recorded) first order Ambisonics impulse responses, or the diffuse sound field signal can be modelled in real time, e.g. with Feedback Delay Network (FDN) algorithms. Both methods can be applied with external tools (e.g. [jconvolver](https://kokkinizita.linuxaudio.org/papers/aella.pdf), [RAZR](https://medi.uni-oldenburg.de/razr/), [zita-rev1](https://kokkinizita.linuxaudio.org/linuxaudio/zita-rev1-doc/quickguide.html)) or with internal methods (`<reverb type="foaconv"/>`, `<reverb type="simplefdn"/>`). See section 5.8 of the user manual for details.
+In room acoustics, the impulse response is the time-domain representation of how a room responds to a brief, sudden sound, such as a click or a tap. It describes how sound waves bounce off surfaces, decay and interact with the environment. In room acoustic simulation, the impulse response is usually divided into two parts: an early part, which is processed by the image source model, and a late part that is mostly diffuse (i.e. isotropic and spatially decorrelated) due to the numerous reflections.
+
+In TASCAR, diffuse sound fields are rendered using first-order ambisonics (FOA). Ambisonics is a surround sound recording and playback technique that captures and reproduces audio in three dimensions. It uses a specific microphone setup and encoding process to capture the spatial information of the sound field. To create late reverberation in TASCAR, a diffuse sound field is generated from the image source model's output. This can be achieved by convolving the model's output with first-order ambisonics impulse responses (simulated or recorded), or by modelling the diffuse sound field in real time with Feedback Delay Network (FDN) algorithms. An FDN network comprises multiple sound paths, reflection filters, delay lines and a mixing matrix that combines the network's output with its input.
+
+Both methods, convolution and FDN, can be applied with external tools (e.g. [jconvolver](https://kokkinizita.linuxaudio.org/papers/aella.pdf), [RAZR](https://medi.uni-oldenburg.de/razr/), [zita-rev1](https://kokkinizita.linuxaudio.org/linuxaudio/zita-rev1-doc/quickguide.html)) or with internal methods (`<reverb type="foaconv"/>`, `<reverb type="simplefdn"/>`). See section 5.8 of the user manual for details.
 
 Add convolution reverb with the internal tool
 `<reverb type="foaconv"/>`:
@@ -103,7 +114,7 @@ addpath /usr/share/tascar/matlab/
 addpath sdm
 ```
 
-To render and visualize the FOA impulse response of the file [`scattering.tsc`](scattering.tsc), type `plot_irhist` in Matlab. Play around with the parametrization of scattering.
+To render and visualize the FOA impulse response of the file [`scattering.tsc`](scattering.tsc), type `plot_irhist` in GNU/Octave or Matlab. Play around with the parametrization of scattering. Please note that the signal processing toolbox is required (in Octave, type `pkg load signal`).
 
 ## Step 4: Render Impulse Responses
 
@@ -118,6 +129,11 @@ Now load the impulse response into Matlab and plot it:
 [ir,fs] = audioread('ir.wav');
 plot(ir)
 ```
+The Matlab / GNU/Octave toolbox of TASCAR can calculate some commonly used roomacoustic measures:
+
+- **DRR** (`drr.m`) : The DRR (direct-to-reverberant energy ratio) is the ratio of the signal energy of the direct path to the signal energy of the reflected path. This is typically achieved by splitting the impulse response after 5 ms and convolving the signal with both parts of the response. Values are usually given as dB values, i.e. DRR = 10 log₁₀(E_(direct)/E_(reflect)).
+- **Reverberation time** (`t60.m`) : The reverberation time is the period during which the impulse response decays by a given ratio, typically 60 dB (1/1000). Depending on the noise floor and the characteristics of the impulse response, other values are sometimes used; for example, 30 dB. However, in this case, the resulting time is scaled to match that of 60 dB.
+- **IACC** (`iacc.m`) : Interaural cross-correlation is the correlation between signals recorded in the left and right ears, for example with an artificial head in real rooms or with the HRTF receiver type in a simulated scene. An IACC close to one is caused by a single source without reflections. A low IACC indicates that the diffuse components of the signal, such as late reverberation, dominate.
 
 To calculate the DRR, the Matlab script `drr.m` can be used:
 ```
@@ -172,7 +188,7 @@ The reverb plugin should have an input in layer 2 and an output in layer 1:
 ```
 Do not forget to connect also the new sound to the microphone, using a second `<connect .../>` element.
 
-For interactive processing of your own voice (or any other real-time input), you may want to decrease the overall latency. To do so, you need to configure the jack sound server to use a smaller fragment size. First, exit TASCAR, and stop the processing. Now, in qjackctl, stop jack and open the setup window. Here you can select a shorter fragment size. Please note that short fragment sizes require a low-delay real-time optimized operating system, e.g., a dedicated Linux kernel, or MacOS.
+For interactive processing of your own voice (or any other real-time input), you may want to decrease the overall latency. To do so, you need to configure the jack sound server to use a smaller fragment size, e.g., 64 samples. First, exit TASCAR, and stop the processing. Now, in qjackctl, stop jack and open the setup window. Here you can select a shorter fragment size. Please note that short fragment sizes require a low-delay real-time optimized operating system, e.g., a dedicated Linux kernel, or MacOS.
 
 In TASCAR, many functions are called on every processing cycle, e.g., the geometry is updated at the boundaries of each audio block. This results in an increase of computational load with smaller fragment sizes. If the CPU load displayed in jack (or in the status bar of TASCAR) reaches values above 50-70% and you experience dropouts, you may need to reduce the complexity of the scene:
 
