@@ -1,18 +1,26 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <session name="sensors" duration="36000" srv_port="9800" license="CC0">
-  <scene/>
+  <scene>
+    <source name="object"/>
+  </scene>  
 
   <mainwindow x="0" y="0" w="100" h="100"/>
   <modules>
-
-    <!-- interface to our Qualisys motion tracker system: -->
+    <!-- interface to the self-made IMU sensor via USB: -->
+    <serialheadtracker actor="/*/object"/>
+    
+    <!-- interface to the self-made IMU sensor via OSC: -->
+    <oscheadtracker name="imu" eogpath="/eog" url="osc.udp://localhost:9877/"/>
+    </oscactor actor="/*/object" path="osc.udp://localhost:9877/">
+    
+    <!-- interface to our Qualisys motion tracker system:-->
     <glabsensors ontop="false">
       <qualisys qtmurl="osc.udp://qadhara:22225/" timeout="10"/>
       <jackstatus warnload="85"/>
     </glabsensors>
-
-    <!-- interface to the self-made IMU/EOG sensor: -->
-    <oscheadtracker name="imu" eogpath="/eog" url="osc.udp://localhost:9877/"/>
+    </oscactor actor="/*/object" path="osc.udp://qadhara:22225/">
+    
+    <!-- interface to the self-made EOG sensor via OSC: -->
     <oscrelay path="/eog" url="osc.udp://localhost:9877/"/>
   </modules>
 </session>
