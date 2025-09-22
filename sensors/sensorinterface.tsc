@@ -1,26 +1,89 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<session name="sensors" duration="36000" srv_port="9800" license="CC0">
-  <scene>
-    <source name="object"/>
-  </scene>  
-
-  <mainwindow x="0" y="0" w="100" h="100"/>
+<session name="sensors" duration="36000" license="CC0">
+<!--
+        The 'scene' element contains the audio and spatial information of the session.
+    -->
+  <scene guiscale="12.5">
+     <!--
+            The 'source' element represents the audio source, in this case, named "pig".
+        -->
+    <source name="pig">
+      <!--
+              The 'sound' element contains the sound plugins for the audio source.
+         -->
+      <!-- 
+        <sound type="cardioidmod">
+        -->
+      <sound x="1"> 
+        <!--
+                   The 'plugins' element contains the plugins used for manipulating the sound.
+            -->
+        <plugins>
+         <!--
+                        The 'sndfile' element represents a sound file
+                        plugin It has a volume level of 65, loops infinitely, and
+                        can be played in an infinite loop.
+                    -->
+          <sndfile name="/home/glab/glabscenes/sounds/animals/pig/pigs.flac" level="65" loop="0"/>
+          <sndfile name="/home/glab/glabscenes/sounds/animals/pig/233176__jarredgibb__pig-grunt-and-squeal-3-48khz.wav" level="65" loop="0" length="29"/>
+        </plugins>
+      </sound>
+    </source>
+     <!--
+            The 'facegroup' element represents a group of walls in the scene.
+            It has dimensions of 4x5x2.6 meters.
+        -->
+    <facegroup shoebox="4 5 2.6" name="pigsty"/>
+    <reverb type="simplefdn" volumetric="4 5 2.6" damping="0.7" forwardstages="1" gainmethod="mean" fixcirculantmat="true" gain="-10"/>
+     <!--
+            The 'receiver' element represents the audio receiver, in this case, named "out".
+            The type "vbap3d" uses a specific speaker layout four our lab while the type "hrtf" is suitable for headphones.
+        -->
+    <!--    
+    <receiver name="out" type="vbap3d" layout="lidhan_all_standing.spk"/>
+    -->
+    <!--
+     -->
+    <receiver type="hrtf" name="out"/>
+  </scene>
+   <!--
+        The 'modules' element represents the additional modules used in the session.
+    -->
   <modules>
     <!-- interface to the self-made IMU sensor via USB: -->
-    <serialheadtracker actor="/*/object"/>
+    <!--
+    -->
+    <serialheadtracker actor="/*/pig"/>
     
     <!-- interface to the self-made IMU sensor via OSC: -->
-    <oscheadtracker name="imu" eogpath="/eog" url="osc.udp://localhost:9877/"/>
-    </oscactor actor="/*/object" path="osc.udp://localhost:9877/">
+    <!--
+    <oscheadtracker actor="/*/pig"/>
+    -->
     
     <!-- interface to our Qualisys motion tracker system:-->
+    <!--
     <glabsensors ontop="false">
-      <qualisys qtmurl="osc.udp://qadhara:22225/" timeout="10"/>
+      <qualisys qtmurl="osc.udp://qadhara:22225/" timeout="10" dataurl="osc.udp://localhost:9877/" dataprefix="/qualisys" uselsl="false"/>
       <jackstatus warnload="85"/>
     </glabsensors>
-    </oscactor actor="/*/object" path="osc.udp://qadhara:22225/">
+    <oscactor actor="/*/pig" path="/qualisys/hp" inputchannels="6" channels="0 1 2 3 5 4" influence="1 1 1 -0.017453 0.017453 -0.017453" local="false"/>
+    -->
+    <!--
+    <pos2osc pattern="/*/*" mode="11" url="osc.udp://localhost:9877/" avatar="pigpos" transport="false"/>
+    -->
+    <!--
+    <datalogging fileformat="mat">
+      <osc path="/pigpos/pig" size="6"/>
+      <osc path="/pigpos/out" size="6"/>
+    </datalogging>
+     -->
+     
+    <!--
+    <oscserver srv_port="9800" srv_proto="UDP"/>
+    -->
     
-    <!-- interface to the self-made EOG sensor via OSC: -->
-    <oscrelay path="/eog" url="osc.udp://localhost:9877/"/>
   </modules>
+    <!--
+    -->
+  <connect src="render.scene:out_[lr]" dest="system:playback_[12]"/> 
 </session>
