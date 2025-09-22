@@ -43,10 +43,18 @@
     </source>
 
     <!-- receiver -->
+    <!-- for headphone use: -->
+    <!--
+    -->
     <receiver name="out" type="hrtf">
       <position>0 0 0 0</position>
       <orientation>0 0 0 0</orientation>
     </receiver>
+
+    <!-- with loudspeakers in the "darklab": -->
+    <!--
+    <receiver name="out" type="vbap" layout="darklab.spk"/>
+    -->
 
     <!-- diffuse reverberation -->
     <!--
@@ -60,13 +68,15 @@ volumetric="37 16 9.1" maxlen="100000" image="false" gain="-11" mute="true">
             volumetric="37 16 9.1" image="false" damping="0.3" absorption="0.4" gain="20">
       <position>0 0 0 4</position>
     </reverb>
-
     -->
+
   </scene>
 
   <modules>
     <simplecontroller actor="/*/out"/>
   </modules>
-  <!-- connect ports: -->
+  <!-- connect ports (headphones only): -->
+  <!--
+  -->
   <connect src="render.scene:out_[lr]" dest="system:playback_[12]"/>
 </session>
