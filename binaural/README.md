@@ -73,6 +73,9 @@ For the estimation of SNR benefit of an adaptive (and therefore non-LTI) system 
 
 Hagerman, B. & Olofsson, Å. (2004). A method to measure the effect of noise reduction algorithms using simultaneous speech and noise. Acta Acustica United with Acustica, 90(2), 356–361.
 
+![snr_estimation](snr_estimation.png)
+*Figure 1: Signal flow of SNR estimation using the method of Hagerman & Olofsson in combination with interactive virtual reality.*
+
 The key concept of this method is to process the signal twice, once with $S+N$ as an input signal, and once with $S-N$ as an input signal. The assumption is that the processing does not depend on the sign of the noise signal. The estimated processed target signal is then $\hat S = \frac12 (O_{S+N} + O_{S-N})$, the estimated processed noise signal is $\hat N = \frac12 (O_{S+N} - O_{S-N})$.
 
 First, we create a second instance of MHA with a slightly modified command line (control port number and jack name need to be changed, and output jack connections disabled):
