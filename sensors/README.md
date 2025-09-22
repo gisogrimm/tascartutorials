@@ -4,6 +4,8 @@ In this tutorial you will learn how to collect and process data from external se
 
 In the end, you will be able to access and manipulate sensor data in TASCAR and GNU Octave/Matlab, as well as use TASCAR's data logging capabilities to record sensor data time-synchronised with your virtual environment.
 
+This tutorial assumes you have at least one sensor available which is sending OSC messages or LSL streams. We use a [self-made head tracker](https://github.com/gisogrimm/headtracker) in our lab.
+
 
 ## Prerequisites
 
