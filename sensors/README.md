@@ -26,6 +26,11 @@ In addition xou can use an Electrooculogram (EOG) to measure eye orientation.
 
 If you are currently in the Gesture Lab you can use a Qualisys motion capture system in addition, which uses multiple cameras to track the movement of reflective markers attached to a head-mounted crown.
 
+If you are using the USB serial port sensor on Linux, you need to make sure that the current user is part of the `dialout` group. To check, type `id` in a terminal, and see if the group `dialout` is listed. If not, you need to perform this line, and then log out and log in again (in some cases, a restart of the computer is required):
+```bash
+sudo useradd -m -G dialout ${USER}
+```
+
 Use command line tool `tascar_lslsl` to check which LSL streams are available in the lab.
 
 ## Step 2: Logging of sensor data
