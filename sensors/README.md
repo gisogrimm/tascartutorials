@@ -20,18 +20,33 @@ Further information on controlling TASCAR via the OSC protocol can be found in S
 
 ## Step 1: Connect sensors
 
-You will be using a self-made sensor combining an Inertial Measurement Unit (IMU) to capture head movement. Look at file `sensorinterface.tsc`. Start TASCAR using `tascar &` and load the scene into TASCAR. Use `dump_osc 9877` in a terminal to see which OSC messages are arriving. You can stop the process with `Ctrl-C` (or `Strg-C` on a German keyboard).
+### Headtracker
+Look at file `sensorinterface.tsc`. Our aim is to control an object in a TASCAR scene using a headtracker. Start TASCAR using `tascar&` and load the scene `sensorinterface.tsc` into TASCAR. There are different sensors you can use:
 
-In addition xou can use an Electrooculogram (EOG) to measure eye orientation.
-
-If you are currently in the Gesture Lab you can use a Qualisys motion capture system in addition, which uses multiple cameras to track the movement of reflective markers attached to a head-mounted crown.
+#### i. self made sensor with an IMU using USB 
+You will be using a self-made sensor consisting of an Inertial Measurement Unit (IMU) to capture head movement. The sensor is connected to the computer using USB. 
 
 If you are using the USB serial port sensor on Linux, you need to make sure that the current user is part of the `dialout` group. To check, type `id` in a terminal, and see if the group `dialout` is listed. If not, you need to perform this line, and then log out and log in again (in some cases, a restart of the computer is required):
 ```bash
 sudo usermod -a -G dialout ${USER}
 ```
 
+#### ii. self made sensor with an IMU using OSC
+You will be using a self-made sensor consisting of an Inertial Measurement Unit (IMU) to capture head movement. The recorded data will be send to tascar via OSC. To use this sensor you need a wifi enabled computer. 
+
+Use `dump_osc 9877` in a terminal to see which OSC messages are arriving. You can stop the process with `Ctrl-C` (or `Strg-C` on a German keyboard).
+
+#### iii. Optical tracking
+If you are currently in the Gesture Lab you can use a Qualisys motion capture system, which uses multiple cameras to track the movement of reflective markers attached to a head-mounted crown.
+
 Use command line tool `tascar_lslsl` to check which LSL streams are available in the lab.
+
+
+
+In addition you can use an Electrooculogram (EOG) to measure eye orientation.
+
+
+
 
 ## Step 2: Logging of sensor data
 
