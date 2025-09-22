@@ -20,7 +20,11 @@ Further information on controlling TASCAR via the OSC protocol can be found in S
 
 ## Step 1: Connect sensors
 
-You will be using a self-made sensor combining an Inertial Measurement Unit (IMU) to capture head movement and an Electrooculogram (EOG) to measure eye orientation. If you are currently in the Gesture Lab you can use a Qualisys motion capture system in addition, which uses multiple cameras to track the movement of reflective markers attached to a head-mounted crown. Look at file `sensorinterface.tsc`. Start TASCAR. Load it into TASCAR and use `dump_osc 9877` in a terminal to see which OSC messages are arriving. You can stop the process with `Ctrl-C` (or `Strg-C` on a German keyboard).
+You will be using a self-made sensor combining an Inertial Measurement Unit (IMU) to capture head movement. Look at file `sensorinterface.tsc`. Start TASCAR using `tascar &` and load the scene into TASCAR. Use `dump_osc 9877` in a terminal to see which OSC messages are arriving. You can stop the process with `Ctrl-C` (or `Strg-C` on a German keyboard).
+
+In addition xou can use an Electrooculogram (EOG) to measure eye orientation.
+
+If you are currently in the Gesture Lab you can use a Qualisys motion capture system in addition, which uses multiple cameras to track the movement of reflective markers attached to a head-mounted crown.
 
 Use command line tool `tascar_lslsl` to check which LSL streams are available in the lab.
 
