@@ -3,6 +3,15 @@
 The majority of TASCAR options can be controlled remotely via the Open Sound Control (OSC)
 (OSC) protocol. For complete OSC specifications, visit [OpenSoundControl.org](https://opensoundcontrol.stanford.edu/). An OSC message consists of an address path string and a format string, which specifies the type of data that follows. OSC messages can be sent over a network using either the [User Datagram Protocol (UDP)](https://en.wikipedia.org/wiki/User_Datagram_Protocol) or the [Transmission Control Protocol (TCP)](https://en.wikipedia.org/wiki/Transmission_Control_Protocol). With UDP, the transmission state is not checked, meaning that messages may be lost during transmission. TCP can guarantee correct transmission (or report an error), but this comes at the cost of longer and less predictable transmission times.
 
+You may use the Linux command line terminal, GNU/Octave or Matlab. To start GNU/Octave on our computers, please open a Terminal, and type:
+```bash
+octave --gui &
+```
+Matlab can be started on most computers with:
+```bash
+matlab -softwareopengl &
+```
+
 
 There is a huge list of tools for sending OSC messages. For the command line, we typically use the `send_osc` tool from the `pyliblo-utils` Debian package. For GNU/Octave and Matlab, the TASCAR installation includes a Java-based tool with the same name (or `send_osc_tcp` for TCP). To add the TASCAR tools for GNU/Octave and Matlab on Linux, type in the Octave or Matlab command window:
 ```
