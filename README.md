@@ -8,7 +8,7 @@ This repository contains a series of TASCAR tutorials. TASCAR is a toolbox for l
 
 These tutorials form the basis of our annual TASCAR workshop. The files are constantly being improved. If you have any suggestions, please submit a pull request.
 
-You can download the tutorial files and all the necessary sound files [from github](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip). All session files were tested with TASCAR version 0.234.4.
+You can download the tutorial files and all the necessary sound files [from github](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip). All session files were tested with TASCAR version 0.238.1.
 
 While some of these tutorials require equipment specific to our laboratory, most can be followed on any PC running Linux, Mac OS or Windows. TASCAR and the Jack Audio Connection Kit (JACK) must be installed for all tutorials, as well as an audio interface with either a loudspeaker system or headphones connected to it. To interactively render your own voice, you will also need a microphone or headset.
 
