@@ -3,16 +3,19 @@
 
 # TASCAR tutorials
 
-This repository contains a series of TASCAR tutorials. TASCAR is a toolbox for low-delay and interactive acoustic scene creation and rendering [<a href="#ref1">1</a>]. For more information, please visit the [TASCAR official website](https://tascar.org/).
+This repository contains a collection of tutorials for **TASCAR** -- a toolbox for low-delay and interactive acoustic scene creation and rendering [<a href="#ref1">1</a>]. For more information, please visit the [TASCAR official website](https://tascar.org/).
 
 
-These tutorials form the basis of our annual TASCAR workshop. The files are constantly being improved. If you have any suggestions, please submit a pull request.
+These tutorials form the basis of our annual **TASCAR workshop**. The files are constantly being improved. If you have any suggestions, please submit a pull request.
 
-You can download the tutorial files and all the necessary sound files [from github](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip). All session files were tested with TASCAR version 0.239.2 on Ubuntu 24.04.
+You can download the tutorial files and all the necessary sound files [from github](https://github.com/gisogrimm/tascartutorials/archive/refs/heads/main.zip). All session files were tested with TASCAR version 0.239.2 on Ubuntu 24.04, but the tutorials are generally compatible with other platforms.
 
 While some of these tutorials require equipment specific to our laboratory, most can be followed on any PC running Linux, Mac OS or Windows. TASCAR and the Jack Audio Connection Kit (JACK) must be installed for all tutorials, as well as an audio interface with either a loudspeaker system or headphones connected to it. To interactively render your own voice, you will also need a microphone or headset.
 
 The *user manual* can be found [on github](https://github.com/gisogrimm/tascar/wiki/master/manual.pdf), or if you installed TASCAR with your packet manager also [locally](file:///usr/share/doc/tascar/manual.pdf). You can use the manual as a valuable reference for all the workshop tutorials.
+
+> 💡 *TASCAR runs on Linux, macOS, and Windows, making it accessible across most major operating systems.*
+
 
 ## List of topics:
 
