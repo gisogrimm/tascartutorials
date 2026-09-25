@@ -18,6 +18,11 @@ There is a huge list of tools for sending OSC messages. For the command line, we
 addpath /usr/share/tascar/matlab/
 ```
 
+### OSC Basics
+- **Address Patterns**: `/scene/water/*/gain` matches all gains under `water`.
+- **Globbing**: Wildcards (`*`) match multiple paths (e.g., `/scene/*/pos`).
+- **Ports**: Default TASCAR OSC port is `9877` (UDP). Use the Octave/Matlab `send_osc_tcp` for TCP, or use the URL `osc.tcp://localhost:9877/` instead of `osc.udp://localhost:9877/` in the command line tools.
+
 ## Step 1: Control playback of a session, and gains of sounds
 
 For this tutorial you can use the session file from the "first steps" tutorial, `firststeps/firststeps.tsc`. Open this session file with TASCAR (in the terminal):
@@ -57,7 +62,7 @@ To set the gain to -10 dB, type:
 | `send_osc 9877 /scene/water/*/gain -10` | `send_osc( 'localhost', 9877, '/scene/water/*/gain', -10);` |
 
 
-**Important Warning:** TASCAR is not checking for excessive gains. Be sure not to enter a huge number, e.g., never use `send_osc 9877 /scene/water/*/gain 100` or so. This would extremely loud and distored sounds. Especially with headphones or with hardware which can reproduce high sound pressure levels, you may damage your hearing. It is recommended to always take of the headphones before changing the gain ot playback state.
+**Important Warning:** TASCAR is not checking for excessive gains. Be sure not to enter a huge number, e.g., never use `send_osc 9877 /scene/water/*/gain 100` or so. This would result in extremely loud and distored sounds. Especially with headphones or with hardware which can reproduce high sound pressure levels, you may damage your hearing. It is recommended to always take off the headphones before changing the gain or playback state.
 
 
 
@@ -91,7 +96,16 @@ To verify your changes, please check the different view settings (top view, side
 
 ## Step 3: Scripting TASCAR with OSC messages
 
-TASCAR can read OSC variables also from text files. The format of the files is straight forward: each line contains a variable, starting with the path, followed by an arbitrary number of parameters. Some (non-OSC) special definitions can be used: a hash tag to write comments, a line starting with a comma followed by a number to wait for the given amount of time, and an "@" followed by a number to execute the given line at a certain session time:
+TASCAR can read OSC variables also from text files. The format of the files is straight forward: each line contains a variable, starting with the path, followed by an arbitrary number of parameters.
+
+Some (non-OSC) special definitions can be used:
+
+- "#" a hash tag to write comments
+- "," a line starting with a comma followed by a number to wait for the given amount of time
+- "@" followed by a number to execute the given line at a certain session time
+- "<" followed by a file name to read additional `tosc` files
+
+
 ```
 # when reaching second 7 then stop:
 @7 /transport/stop
@@ -110,7 +124,8 @@ The file extension used for such files is typically `.tosc` (for TASCAR OSC file
 ```
 send_osc('localhost',9877,'/runscript','script.tosc')
 ```
-Please note that messages starting with "@" (timed messages) will be kept in memory until they are cleared with
+
+**Warning:** Please note that messages starting with "@" (timed messages) will persist until they are cleared with
 ```
 send_osc('localhost',9877,'/timedmessages/clear');
 ```
